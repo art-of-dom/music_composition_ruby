@@ -1,3 +1,6 @@
+# encoding: utf-8
+# frozen_string_literal: true
 module MusicTheory
-  VERSION = "0.1.0"
+  # The version of the gem.
+  VERSION = '0.0.2'.freeze
 end
