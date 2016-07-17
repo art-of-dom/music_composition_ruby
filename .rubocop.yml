@@ -14,7 +14,7 @@ AllCops:
 Metrics/LineLength:
   Exclude:
     - 'spec/**/*'
-    - 'music_theory.gemspec'
+    - 'music_composition.gemspec'
 
 
 Style/Documentation:

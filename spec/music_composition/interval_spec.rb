@@ -1,7 +1,7 @@
 # encoding: utf-8
 # frozen_string_literal: true
 require 'spec_helper'
-include MusicTheory
+include MusicComposition
 
 describe Interval::Quality do
   it 'Has correct quality enums defined as keys' do

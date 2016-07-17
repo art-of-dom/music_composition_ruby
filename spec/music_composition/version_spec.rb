@@ -2,8 +2,8 @@
 # frozen_string_literal: true
 require 'spec_helper'
 
-describe MusicTheory::VERSION do
+describe MusicComposition::VERSION do
   it 'has a version number' do
-    expect(MusicTheory::VERSION).not_to be nil
+    expect(MusicComposition::VERSION).not_to be nil
   end
 end

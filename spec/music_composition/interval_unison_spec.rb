@@ -1,7 +1,7 @@
 # encoding: utf-8
 # frozen_string_literal: true
 require 'spec_helper'
-include MusicTheory
+include MusicComposition
 
 describe 'Interval Unison' do
   it 'Calculates Perfect Unison (P1) up correctly' do

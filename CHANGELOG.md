@@ -1,3 +1,7 @@
+## 0.0.4 (July 17, 2016)
+Fixes:
+  - Renamed module to better reflect use
+
 ## 0.0.3 (July 17, 2016)
 Features:
   - Added theory/interval.rb

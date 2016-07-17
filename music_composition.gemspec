@@ -2,11 +2,11 @@
 # frozen_string_literal: true
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'music_theory/version'
+require 'music_composition/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'music_theory'
-  spec.version       = MusicTheory::VERSION
+  spec.name          = 'music_composition'
+  spec.version       = MusicComposition::VERSION
   spec.authors       = ['Dom Postorivo']
   spec.email         = ['depostorivo@gmail.com']
 

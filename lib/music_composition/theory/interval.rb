@@ -7,7 +7,7 @@
 # using an enum containing the value corrlating to the
 # major/minor based intervals and perfect based intervals
 # and the symbol for each the symbol.
-module MusicTheory
+module MusicComposition
   ##
   # Contains the basic defines of the quality of an interval
   # using an enum containing the value corrlating to the
@@ -46,7 +46,7 @@ end
 ##
 # The representation of the distance from one note to another based on the
 # letter name and value of both notes.
-module MusicTheory
+module MusicComposition
   ##
   # The representation of the distance from one note to another based on the
   # letter name and value of both notes.

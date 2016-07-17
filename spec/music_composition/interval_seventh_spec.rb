@@ -1,7 +1,7 @@
 # encoding: utf-8
 # frozen_string_literal: true
 require 'spec_helper'
-include MusicTheory
+include MusicComposition
 
 describe 'Interval Seventh' do
   it 'Calculates a doublely diminished seventh (dd7) up correctly' do

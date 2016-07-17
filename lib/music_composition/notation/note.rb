@@ -2,7 +2,7 @@
 # frozen_string_literal: true
 require 'ruby-enum'
 
-module MusicTheory
+module MusicComposition
   class Note
     ##
     # Letter
