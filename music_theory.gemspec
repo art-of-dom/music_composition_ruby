@@ -31,9 +31,8 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rake', '~> 10.0'
   spec.add_development_dependency 'rdoc', '~> 4.1'
   spec.add_development_dependency 'rspec', '~> 3.0'
-  spec.add_development_dependency 'rubocop', '~> 0.40.0'
+  spec.add_development_dependency 'rubocop', '~> 0.41.1'
   spec.add_development_dependency 'simplecov', '~> 0.11.2'
-
 
   spec.add_dependency 'ruby-enum', '~> 0.5'
 end

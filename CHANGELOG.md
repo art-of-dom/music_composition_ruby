@@ -1,3 +1,8 @@
+## 0.0.3 (July 17, 2016)
+Features:
+  - Added theory/interval.rb
+  - Added TODO file
+
 ## 0.0.2 (July 4, 2016)
 
 Features:

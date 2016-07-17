@@ -2,6 +2,7 @@
 # frozen_string_literal: true
 require 'music_theory/version'
 require 'music_theory/notation/note'
+require 'music_theory/theory/interval'
 
 # module MusicTheory
 #  # Your code goes here...
