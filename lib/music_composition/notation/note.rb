@@ -3,7 +3,14 @@
 require 'ruby-enum'
 
 module MusicComposition
+  ##
+  # Note
+  #
+  # The basic representation of a note containing the
+  # letter of the note, the quality added to the letter,
+  # and the resulting value of the note.
   class Note
+    include Pitch
     ##
     # Letter
     #
@@ -31,6 +38,12 @@ module MusicComposition
     end
   end
 
+  ##
+  # Note
+  #
+  # The basic representation of a note containing the
+  # letter of the note, the quality added to the letter,
+  # and the resulting value of the note.
   class Note
     ##
     # Quality

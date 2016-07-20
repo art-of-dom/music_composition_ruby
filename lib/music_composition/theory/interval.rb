@@ -1,7 +1,6 @@
 # encoding: utf-8
 # frozen_string_literal: true
 
-
 ##
 # Contains the basic defines of the quality of an interval
 # using an enum containing the value corrlating to the
@@ -33,7 +32,7 @@ module MusicComposition
       # Index of the value in refrence to
       # a perfect interval refrence value
       BASE_PERFECT_VAL_INDEX = 0
-      ## 
+      ##
       # Index of the value in refrence to
       # a perfect interval refrence value
       BASE_MAJOR_VAL_INDEX = 1
@@ -57,8 +56,9 @@ module MusicComposition
     # _direction_ : the direction of the interval
     # _quality_ : The quality of the interval.
     # _letter_distance_ : the distance between the letters of two given notes
+    attr_reader :note1, :note2, :direction, :quality, :letter_distance
     # _val_distance_ : the raw distance between the value of the two given notes
-    attr_reader :note1, :note2, :direction, :quality, :letter_distance, :val_distance
+    attr_reader :val_distance
 
     # Interval direction down
     UP = 1

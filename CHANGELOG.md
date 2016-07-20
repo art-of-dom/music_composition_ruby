@@ -1,9 +1,19 @@
+## 0.0.5 (July 19, 2016)
+
+Features:
+
+  - Added notation/pitch.rb
+
 ## 0.0.4 (July 17, 2016)
+
 Fixes:
+
   - Renamed module to better reflect use
 
 ## 0.0.3 (July 17, 2016)
+
 Features:
+
   - Added theory/interval.rb
   - Added TODO file
 

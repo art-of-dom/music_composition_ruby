@@ -1,6 +1,6 @@
 # This is the configuration used to check the rubocop source code.
 
-inherit_from: .rubocop_todo.yml
+#inherit_from: .rubocop_todo.yml
 
 AllCops:
   Exclude:
@@ -9,13 +9,23 @@ AllCops:
     - 'tmp/**/*'
   TargetRubyVersion: 2.1
 
+Metrics/AbcSize:
+    Max: 18
 
+Metrics/CyclomaticComplexity:
+  Max: 7
 
 Metrics/LineLength:
   Exclude:
     - 'spec/**/*'
     - 'music_composition.gemspec'
 
+Metrics/PerceivedComplexity:
+  Max: 8
+
+Style/ConstantName:
+  Exclude:
+    - 'spec/music_composition/defines/pitch_defines.rb'
 
 Style/Documentation:
   Exclude:
