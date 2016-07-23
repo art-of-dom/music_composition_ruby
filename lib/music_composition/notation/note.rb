@@ -4,16 +4,12 @@ require 'ruby-enum'
 
 module MusicComposition
   ##
-  # Note
-  #
   # The basic representation of a note containing the
   # letter of the note, the quality added to the letter,
   # and the resulting value of the note.
   class Note
     include Pitch
     ##
-    # Letter
-    #
     # Contains the basic defines of the letter of a note
     # using an enum containing the value modifier and
     # the symbol.
@@ -36,18 +32,7 @@ module MusicComposition
       # The index of the string or name of a given letter
       NAME_INDEX = 2
     end
-  end
-
-  ##
-  # Note
-  #
-  # The basic representation of a note containing the
-  # letter of the note, the quality added to the letter,
-  # and the resulting value of the note.
-  class Note
     ##
-    # Quality
-    #
     # Contains the basic defines of the quality of a note
     # using an enum containing the value modifier and
     # the symbol.
@@ -63,23 +48,14 @@ module MusicComposition
       # The index of the string or name of a given quality
       NAME_INDEX = 1
     end
-  end
 
-  ##
-  # Note
-  #
-  # The basic representation of a note containing the
-  # letter of the note, the quality added to the letter,
-  # and the resulting value of the note.
-  class Note
     ##
-    #
     # attributes
     # _letter_ : the letter of the note
     # _quality_ : the quality of the note
     # _val_ : the raw value of the note based on the
-    # base value of the letter and the modifier
-    # val of the quality.
+    # base value of the letter and the modifier val
+    # of the quality.
     attr_reader :letter, :quality, :val
 
     ##
@@ -92,7 +68,7 @@ module MusicComposition
     def initialize(letter: nil, quality: nil, val: nil)
       @letter = Letter.parse(letter)
       @quality = Quality.parse(quality)
-      @val = val
+      @val = val % 12 if val
 
       set_vars
     end

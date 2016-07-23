@@ -4,6 +4,7 @@ require 'music_composition/version'
 require 'music_composition/notation/pitch'
 require 'music_composition/notation/note'
 require 'music_composition/theory/interval'
+require 'music_composition/theory/scale'
 
 # module MusicComposition
 #  # Your code goes here...

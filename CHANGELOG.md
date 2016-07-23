@@ -1,8 +1,17 @@
+## 0.0.6 (July 23, 2016)
+
+Features:
+
+  - Added theory/scales.rb
+  - Added spec/music_composition/defines/note_defines.rb
+  - Added spec/music_composition/helpers/note_compare.rb
+
 ## 0.0.5 (July 19, 2016)
 
 Features:
 
   - Added notation/pitch.rb
+  - Added spec/music_composition/defines/pitch_defines.rb
 
 ## 0.0.4 (July 17, 2016)
 
