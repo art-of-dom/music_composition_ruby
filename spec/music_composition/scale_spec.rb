@@ -19,6 +19,14 @@ describe Scale::Pattern do
 end
 
 describe Scale do
+  it 'Raises ArgumentError if root note not given' do
+    expect { Scale.new(name: 'Major') }.to raise_error ArgumentError
+  end
+
+  it 'Raises ArgumentError if root note not given' do
+    expect { Scale.new(root: NOTE_C_NATURAL) }.to raise_error ArgumentError
+  end
+
   it 'Raises ArgumentError if scale name not found' do
     expect { Scale.new(root: NOTE_C_FLAT, name: 'idk') }.to raise_error ArgumentError
   end

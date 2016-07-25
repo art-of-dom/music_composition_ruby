@@ -46,8 +46,11 @@ module MusicComposition
 
     def find_pattern_base_pattern
       pattern = nil
+      formula_index = Pattern::FORMULA_INDEX
       Pattern.each do |_key, enum|
-        pattern = Array.new(enum.value[Pattern::FORMULA_INDEX]) if enum.value[1..enum.value.length].any? { |s| s.casecmp(@name) == 0 }
+        if enum.value[1..enum.value.length].any? { |s| s.casecmp(@name) == 0 }
+          pattern = Array.new(enum.value[formula_index])
+        end
         return pattern, enum.value if pattern
       end
       raise ArgumentError
@@ -64,9 +67,12 @@ module MusicComposition
       @notes = Array.new(0)
       @notes.push(root)
       id_index = Note::Letter::ID_INDEX
+      name_index = Note::Letter::NAME_INDEX
       @pattern.each do |pattern|
         letter_id = (@notes[-1].letter[id_index] + 1) % 7
-        @notes.push(Note.new(letter: Note::Letter.values[letter_id][Note::Letter::NAME_INDEX], val: @notes[-1].val + pattern))
+        val = @notes[-1].val + pattern
+        letter = Note::Letter.values[letter_id][name_index]
+        @notes.push(Note.new(letter: letter, val: val))
       end
     end
 

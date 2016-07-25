@@ -1,9 +1,17 @@
 DONE rename module to music_composition
 TODO add an enharmonic equivalent to notes
 TODO cover octave/extended in intervals
+TODO add more reference pitch options and tunings/temperaments for customization
+TODO add more scale names and aliases and give users ability add custom names
 DONE create pitch.rb
 DONE create scale.rb
-TODO create duration.rb
+DONE create duration.rb
 TODO create measure.rb
+TODO create articulation.rb
+TODO create dynamics.rb
+TODO create set.rb
+TODO create analysis.rb
+TODO create harmonic_analysis.rb
 TODO create chord.rb/chord_symbol.rb
 TODO create synth.rb
+TODO create playback.rb

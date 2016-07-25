@@ -1,3 +1,9 @@
+## 0.0.7 (July 24, 2016)
+
+Features:
+
+  - Added notation/duration.rb
+
 ## 0.0.6 (July 23, 2016)
 
 Features:
