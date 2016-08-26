@@ -1,3 +1,13 @@
+## 0.0.8 (August 24, 2016)
+
+Features:
+
+  - Added notation/measure.rb
+
+Fixes:
+
+  - Fixed define spelling error in notation/duration.rb
+
 ## 0.0.7 (July 24, 2016)
 
 Features:

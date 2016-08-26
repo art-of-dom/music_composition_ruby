@@ -16,7 +16,7 @@ end
 
 describe Duration::Value do
   it 'Has correct value enums defined as keys' do
-    expect(Duration::Value.keys).to eq [:TWO_HUNDRED_FIFTY_SIXTH, :ONE_HUNDRED_TWENTY_EIGHTH, :SIXTY_FOURTH, :THIRTY_SECOND, :SIXTEENTH, :EIGHTH, :QUATER, :HALF, :WHOLE, :DOUBLE_WHOLE]
+    expect(Duration::Value.keys).to eq [:TWO_HUNDRED_FIFTY_SIXTH, :ONE_HUNDRED_TWENTY_EIGHTH, :SIXTY_FOURTH, :THIRTY_SECOND, :SIXTEENTH, :EIGHTH, :QUARTER, :HALF, :WHOLE, :DOUBLE_WHOLE]
   end
 
   it 'Has correct value enums defined as values' do
@@ -110,17 +110,17 @@ describe Duration do
   end
 
   it 'Creates a quater note' do
-    dur = Duration.new(val: 'QUATER', type: 'note')
+    dur = Duration.new(val: 'QUARTER', type: 'note')
     expect(dur.type).to eq Duration::Type::NOTE
-    expect(dur.base_val).to eq Duration::Value::QUATER
-    expect(dur.val).to eq Duration::Value::QUATER
+    expect(dur.base_val).to eq Duration::Value::QUARTER
+    expect(dur.val).to eq Duration::Value::QUARTER
   end
 
   it 'Creates a quater rest' do
-    dur = Duration.new(val: 'QUATER', type: 'rest')
+    dur = Duration.new(val: 'QUARTER', type: 'rest')
     expect(dur.type).to eq Duration::Type::REST
-    expect(dur.base_val).to eq Duration::Value::QUATER
-    expect(dur.val).to eq Duration::Value::QUATER
+    expect(dur.base_val).to eq Duration::Value::QUARTER
+    expect(dur.val).to eq Duration::Value::QUARTER
   end
 
   it 'Creates a half note' do

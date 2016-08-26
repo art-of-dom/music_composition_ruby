@@ -24,9 +24,15 @@ module MusicComposition
     # The pattern and identifiers used to create scales.
     class Pattern
       include Ruby::Enum
-      define :DIATONIC, [[W, W, H, W, W, W, H], 'Major', 'Dorian', 'Phrygian', 'Lydian', 'Mixolydin', 'Minor', 'Locrian']
-      define :HARMONIC, [[W, H, W, W, H, A, H], 'Harmonic Minor', 'Locrian #6', 'Ionian #5', 'Dorian #4', 'Phrygian Dominant', 'Lydian #2', 'Super Locrian b7']
-      define :MELODIC, [[W, H, W, W, W, W, H], 'Melodic Minor', 'Dorian b2', 'Lydian #5', 'Lydian Dominant', 'Mixolydin b6', 'Half Diminished', 'Super Locrian']
+      define :DIATONIC, [[W, W, H, W, W, W, H], 'Major', \
+                         'Dorian', 'Phrygian', 'Lydian', \
+                         'Mixolydin', 'Minor', 'Locrian']
+      define :HARMONIC, [[W, H, W, W, H, A, H], 'Harmonic Minor', \
+                         'Locrian #6', 'Ionian #5', 'Dorian #4', \
+                         'Phrygian Dominant', 'Lydian #2', 'Super Locrian b7']
+      define :MELODIC, [[W, H, W, W, W, W, H], 'Melodic Minor',\
+                        'Dorian b2', 'Lydian #5', 'Lydian Dominant',\
+                        'Mixolydin b6', 'Half Diminished', 'Super Locrian']
       # The index of the scale pattern formula
       FORMULA_INDEX = 0
     end
@@ -48,7 +54,7 @@ module MusicComposition
       pattern = nil
       formula_index = Pattern::FORMULA_INDEX
       Pattern.each do |_key, enum|
-        if enum.value[1..enum.value.length].any? { |s| s.casecmp(@name) == 0 }
+        if enum.value[1..enum.value.length].any? { |s| s.casecmp(@name).zero? }
           pattern = Array.new(enum.value[formula_index])
         end
         return pattern, enum.value if pattern

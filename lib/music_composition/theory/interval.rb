@@ -83,7 +83,7 @@ module MusicComposition
 
       @letter_distance = ((comp.letter[0] - ref.letter[0]) + 7) % 7
       @val_distance = comp.val - ref.val
-      unison_correcter if @letter_distance == 0
+      unison_correcter if @letter_distance.zero?
       @val_distance = (@val_distance + 12) % 12
     end
 

@@ -27,8 +27,8 @@ module MusicComposition
       define :SIXTY_FOURTH, 2**2 * BASE_VAL
       define :THIRTY_SECOND, 2**3 * BASE_VAL
       define :SIXTEENTH, 2**4 * BASE_VAL
-      define :EIGHTH,  2**5 * BASE_VAL
-      define :QUATER,  2**6 * BASE_VAL
+      define :EIGHTH, 2**5 * BASE_VAL
+      define :QUARTER, 2**6 * BASE_VAL
       define :HALF, 2**7 * BASE_VAL
       define :WHOLE, 2**8 * BASE_VAL
       define :DOUBLE_WHOLE, 2**9 * BASE_VAL
@@ -45,12 +45,18 @@ module MusicComposition
   ##
   # initialize:
   # initializes the duration based on the type and value
-  def initialize(type: nil, val: nil)
+  def initialize(type: nil, val: nil, raw: nil)
     # This blows up for some reason
     # raise ArgumentError if type.nil? || val.nil?
 
-    @type = Duration::Type.parse(type)
-    @base_val = Duration::Value.parse(val)
-    @val = @base_val
+    if raw.nil?
+      @type = Duration::Type.parse(type)
+      @base_val = Duration::Value.parse(val)
+      @val = @base_val
+    else
+      @type = nil
+      @base_val = nil
+      @val = raw
+    end
   end
 end

@@ -1,6 +1,6 @@
 # This is the configuration used to check the rubocop source code.
 
-#inherit_from: .rubocop_todo.yml
+inherit_from: .rubocop_todo.yml
 
 AllCops:
   Exclude:
@@ -9,8 +9,8 @@ AllCops:
     - 'tmp/**/*'
   TargetRubyVersion: 2.1
 
-Metrics/AbcSize:
-    Max: 18
+#Metrics/AbcSize:
+#    Max: 18
 
 Metrics/CyclomaticComplexity:
   Max: 7
