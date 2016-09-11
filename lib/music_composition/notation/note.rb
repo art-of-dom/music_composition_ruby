@@ -74,18 +74,13 @@ module MusicComposition
     end
 
     def set_vars
-      if !@letter.nil? && !@quality.nil?
-        set_val
-      elsif !@letter.nil? && !@val.nil?
-        set_quality
-      elsif !@quality.nil? && !@val.nil?
-        set_letter
-      else
-        raise ArgumentError
-      end
+      set_val if @val.nil?
+      set_quality if @quality.nil?
+      set_letter if @letter.nil?
     end
 
     def set_val
+      raise ArgumentError if @letter.nil? || @quality.nil?
       val = @letter[Letter::BASE_VAL_INDEX]
       val += @quality[Quality::VAL_INDEX]
       val += 12 if val < 0
@@ -93,6 +88,7 @@ module MusicComposition
     end
 
     def set_quality
+      raise ArgumentError if @letter.nil? || @val.nil?
       quality = @val - @letter[Letter::BASE_VAL_INDEX]
       quality += 12 if quality < -2
       quality -= 12 if quality > 2
@@ -102,6 +98,7 @@ module MusicComposition
     end
 
     def set_letter
+      raise ArgumentError if @quality.nil? || @val.nil?
       letter = (@val - @quality[Quality::VAL_INDEX]) % 12
       letter += 12 if val < 0
       Letter.each do |_key, enum|

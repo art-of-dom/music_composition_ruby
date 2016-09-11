@@ -3,380 +3,88 @@
 require 'spec_helper'
 include MusicComposition
 
-describe 'Interval Unison' do
+describe Interval do
   it 'Calculates Perfect Unison (P1) up correctly' do
-    n = Note.new(letter: 'C', quality: 'NATURAL')
-    interval = Interval.new(n1: n, n2: n)
+    note1 = [NOTE_C_NATURAL.dup, NOTE_D_NATURAL.dup, NOTE_E_NATURAL.dup, NOTE_F_NATURAL.dup, NOTE_G_NATURAL.dup, NOTE_A_NATURAL.dup, NOTE_B_NATURAL.dup]
+    note2 = [NOTE_C_NATURAL.dup, NOTE_D_NATURAL.dup, NOTE_E_NATURAL.dup, NOTE_F_NATURAL.dup, NOTE_G_NATURAL.dup, NOTE_A_NATURAL.dup, NOTE_B_NATURAL.dup]
 
-    expect(interval.quality).to eq(Interval::Quality::PERFECT)
-    expect(interval.letter_distance).to eq(0)
-    expect(interval.val_distance).to eq(0)
-    expect(interval.direction).to eq(Interval::UP)
+    note1.zip(note2).each do |n1, n2|
+      interval = described_class.new(n1: n1, n2: n2)
 
-    n = Note.new(letter: 'D', quality: 'NATURAL')
-    interval = Interval.new(n1: n, n2: n)
-
-    expect(interval.quality).to eq(Interval::Quality::PERFECT)
-    expect(interval.letter_distance).to eq(0)
-    expect(interval.val_distance).to eq(0)
-    expect(interval.direction).to eq(Interval::UP)
-
-    n = Note.new(letter: 'E', quality: 'NATURAL')
-    interval = Interval.new(n1: n, n2: n)
-
-    expect(interval.quality).to eq(Interval::Quality::PERFECT)
-    expect(interval.letter_distance).to eq(0)
-    expect(interval.val_distance).to eq(0)
-    expect(interval.direction).to eq(Interval::UP)
-
-    n = Note.new(letter: 'F', quality: 'NATURAL')
-    interval = Interval.new(n1: n, n2: n)
-
-    expect(interval.quality).to eq(Interval::Quality::PERFECT)
-    expect(interval.letter_distance).to eq(0)
-    expect(interval.val_distance).to eq(0)
-    expect(interval.direction).to eq(Interval::UP)
-
-    n = Note.new(letter: 'G', quality: 'NATURAL')
-    interval = Interval.new(n1: n, n2: n)
-
-    expect(interval.quality).to eq(Interval::Quality::PERFECT)
-    expect(interval.letter_distance).to eq(0)
-    expect(interval.val_distance).to eq(0)
-    expect(interval.direction).to eq(Interval::UP)
-
-    n = Note.new(letter: 'A', quality: 'NATURAL')
-    interval = Interval.new(n1: n, n2: n)
-
-    expect(interval.quality).to eq(Interval::Quality::PERFECT)
-    expect(interval.letter_distance).to eq(0)
-    expect(interval.val_distance).to eq(0)
-    expect(interval.direction).to eq(Interval::UP)
-
-    n = Note.new(letter: 'B', quality: 'NATURAL')
-    interval = Interval.new(n1: n, n2: n)
-
-    expect(interval.quality).to eq(Interval::Quality::PERFECT)
-    expect(interval.letter_distance).to eq(0)
-    expect(interval.val_distance).to eq(0)
-    expect(interval.direction).to eq(Interval::UP)
+      expect(interval.quality).to eq(Interval::Quality::PERFECT)
+      expect(interval.letter_distance).to eq(0)
+      expect(interval.val_distance).to eq(0)
+      expect(interval.direction).to eq(Interval::UP)
+    end
   end
 
   it 'Calculates Perfect Unison (P1) down correctly' do
-    n = Note.new(letter: 'C', quality: 'NATURAL')
-    interval = Interval.new(n1: n, n2: n, direction: Interval::DOWN)
+    note1 = [NOTE_C_NATURAL.dup, NOTE_D_NATURAL.dup, NOTE_E_NATURAL.dup, NOTE_F_NATURAL.dup, NOTE_G_NATURAL.dup, NOTE_A_NATURAL.dup, NOTE_B_NATURAL.dup]
+    note2 = [NOTE_C_NATURAL.dup, NOTE_D_NATURAL.dup, NOTE_E_NATURAL.dup, NOTE_F_NATURAL.dup, NOTE_G_NATURAL.dup, NOTE_A_NATURAL.dup, NOTE_B_NATURAL.dup]
 
-    expect(interval.quality).to eq(Interval::Quality::PERFECT)
-    expect(interval.letter_distance).to eq(0)
-    expect(interval.val_distance).to eq(0)
-    expect(interval.direction).to eq(Interval::DOWN)
+    note1.zip(note2).each do |n1, n2|
+      interval = described_class.new(n1: n1, n2: n2, direction: Interval::DOWN)
 
-    n = Note.new(letter: 'D', quality: 'NATURAL')
-    interval = Interval.new(n1: n, n2: n, direction: Interval::DOWN)
-
-    expect(interval.quality).to eq(Interval::Quality::PERFECT)
-    expect(interval.letter_distance).to eq(0)
-    expect(interval.val_distance).to eq(0)
-    expect(interval.direction).to eq(Interval::DOWN)
-
-    n = Note.new(letter: 'E', quality: 'NATURAL')
-    interval = Interval.new(n1: n, n2: n, direction: Interval::DOWN)
-
-    expect(interval.quality).to eq(Interval::Quality::PERFECT)
-    expect(interval.letter_distance).to eq(0)
-    expect(interval.val_distance).to eq(0)
-    expect(interval.direction).to eq(Interval::DOWN)
-
-    n = Note.new(letter: 'F', quality: 'NATURAL')
-    interval = Interval.new(n1: n, n2: n, direction: Interval::DOWN)
-
-    expect(interval.quality).to eq(Interval::Quality::PERFECT)
-    expect(interval.letter_distance).to eq(0)
-    expect(interval.val_distance).to eq(0)
-    expect(interval.direction).to eq(Interval::DOWN)
-
-    n = Note.new(letter: 'G', quality: 'NATURAL')
-    interval = Interval.new(n1: n, n2: n, direction: Interval::DOWN)
-
-    expect(interval.quality).to eq(Interval::Quality::PERFECT)
-    expect(interval.letter_distance).to eq(0)
-    expect(interval.val_distance).to eq(0)
-    expect(interval.direction).to eq(Interval::DOWN)
-
-    n = Note.new(letter: 'A', quality: 'NATURAL')
-    interval = Interval.new(n1: n, n2: n, direction: Interval::DOWN)
-
-    expect(interval.quality).to eq(Interval::Quality::PERFECT)
-    expect(interval.letter_distance).to eq(0)
-    expect(interval.val_distance).to eq(0)
-    expect(interval.direction).to eq(Interval::DOWN)
-
-    n = Note.new(letter: 'B', quality: 'NATURAL')
-    interval = Interval.new(n1: n, n2: n, direction: Interval::DOWN)
-
-    expect(interval.quality).to eq(Interval::Quality::PERFECT)
-    expect(interval.letter_distance).to eq(0)
-    expect(interval.val_distance).to eq(0)
-    expect(interval.direction).to eq(Interval::DOWN)
+      expect(interval.quality).to eq(Interval::Quality::PERFECT)
+      expect(interval.letter_distance).to eq(0)
+      expect(interval.val_distance).to eq(0)
+      expect(interval.direction).to eq(Interval::DOWN)
+    end
   end
 
   it 'Calculates Augmented Unison (A1) up correctly' do
-    n1 = Note.new(letter: 'C', quality: 'NATURAL')
-    n2 = Note.new(letter: 'C', quality: 'SHARP')
-    interval = Interval.new(n1: n1, n2: n2)
+    note1 = [NOTE_C_NATURAL.dup, NOTE_D_NATURAL.dup, NOTE_E_NATURAL.dup, NOTE_F_NATURAL.dup, NOTE_G_NATURAL.dup, NOTE_A_NATURAL.dup, NOTE_B_NATURAL.dup]
+    note2 = [NOTE_C_SHARP.dup, NOTE_D_SHARP.dup, NOTE_E_SHARP.dup, NOTE_F_SHARP.dup, NOTE_G_SHARP.dup, NOTE_A_SHARP.dup, NOTE_B_SHARP.dup]
 
-    expect(interval.quality).to eq(Interval::Quality::AUGMENTED)
-    expect(interval.letter_distance).to eq(0)
-    expect(interval.val_distance).to eq(1)
-    expect(interval.direction).to eq(Interval::UP)
+    note1.zip(note2).each do |n1, n2|
+      interval = described_class.new(n1: n1, n2: n2)
 
-    n1 = Note.new(letter: 'D', quality: 'NATURAL')
-    n2 = Note.new(letter: 'D', quality: 'FLAT')
-    interval = Interval.new(n1: n1, n2: n2)
-
-    expect(interval.quality).to eq(Interval::Quality::AUGMENTED)
-    expect(interval.letter_distance).to eq(0)
-    expect(interval.val_distance).to eq(1)
-    expect(interval.direction).to eq(Interval::UP)
-
-    n1 = Note.new(letter: 'E', quality: 'NATURAL')
-    n2 = Note.new(letter: 'E', quality: 'SHARP')
-    interval = Interval.new(n1: n1, n2: n2)
-
-    expect(interval.quality).to eq(Interval::Quality::AUGMENTED)
-    expect(interval.letter_distance).to eq(0)
-    expect(interval.val_distance).to eq(1)
-    expect(interval.direction).to eq(Interval::UP)
-
-    n1 = Note.new(letter: 'F', quality: 'NATURAL')
-    n2 = Note.new(letter: 'F', quality: 'FLAT')
-    interval = Interval.new(n1: n1, n2: n2)
-
-    expect(interval.quality).to eq(Interval::Quality::AUGMENTED)
-    expect(interval.letter_distance).to eq(0)
-    expect(interval.val_distance).to eq(1)
-    expect(interval.direction).to eq(Interval::UP)
-
-    n1 = Note.new(letter: 'G', quality: 'NATURAL')
-    n2 = Note.new(letter: 'G', quality: 'SHARP')
-    interval = Interval.new(n1: n1, n2: n2)
-
-    expect(interval.quality).to eq(Interval::Quality::AUGMENTED)
-    expect(interval.letter_distance).to eq(0)
-    expect(interval.val_distance).to eq(1)
-    expect(interval.direction).to eq(Interval::UP)
-
-    n1 = Note.new(letter: 'A', quality: 'NATURAL')
-    n2 = Note.new(letter: 'A', quality: 'FLAT')
-    interval = Interval.new(n1: n1, n2: n2)
-
-    expect(interval.quality).to eq(Interval::Quality::AUGMENTED)
-    expect(interval.letter_distance).to eq(0)
-    expect(interval.val_distance).to eq(1)
-    expect(interval.direction).to eq(Interval::UP)
-
-    n1 = Note.new(letter: 'B', quality: 'NATURAL')
-    n2 = Note.new(letter: 'B', quality: 'SHARP')
-    interval = Interval.new(n1: n1, n2: n2)
-
-    expect(interval.quality).to eq(Interval::Quality::AUGMENTED)
-    expect(interval.letter_distance).to eq(0)
-    expect(interval.val_distance).to eq(1)
-    expect(interval.direction).to eq(Interval::UP)
+      expect(interval.quality).to eq(Interval::Quality::AUGMENTED)
+      expect(interval.letter_distance).to eq(0)
+      expect(interval.val_distance).to eq(1)
+      expect(interval.direction).to eq(Interval::UP)
+    end
   end
 
   it 'Calculates Augmented Unison (A1) down correctly' do
-    n1 = Note.new(letter: 'C', quality: 'NATURAL')
-    n2 = Note.new(letter: 'C', quality: 'SHARP')
-    interval = Interval.new(n1: n1, n2: n2, direction: Interval::DOWN)
+    note1 = [NOTE_C_NATURAL.dup, NOTE_D_NATURAL.dup, NOTE_E_NATURAL.dup, NOTE_F_NATURAL.dup, NOTE_G_NATURAL.dup, NOTE_A_NATURAL.dup, NOTE_B_NATURAL.dup]
+    note2 = [NOTE_C_SHARP.dup, NOTE_D_SHARP.dup, NOTE_E_SHARP.dup, NOTE_F_SHARP.dup, NOTE_G_SHARP.dup, NOTE_A_SHARP.dup, NOTE_B_SHARP.dup]
 
-    expect(interval.quality).to eq(Interval::Quality::AUGMENTED)
-    expect(interval.letter_distance).to eq(0)
-    expect(interval.val_distance).to eq(1)
-    expect(interval.direction).to eq(Interval::DOWN)
+    note1.zip(note2).each do |n1, n2|
+      interval = described_class.new(n1: n1, n2: n2, direction: Interval::DOWN)
 
-    n1 = Note.new(letter: 'D', quality: 'NATURAL')
-    n2 = Note.new(letter: 'D', quality: 'FLAT')
-    interval = Interval.new(n1: n1, n2: n2, direction: Interval::DOWN)
-
-    expect(interval.quality).to eq(Interval::Quality::AUGMENTED)
-    expect(interval.letter_distance).to eq(0)
-    expect(interval.val_distance).to eq(1)
-    expect(interval.direction).to eq(Interval::DOWN)
-
-    n1 = Note.new(letter: 'E', quality: 'NATURAL')
-    n2 = Note.new(letter: 'E', quality: 'SHARP')
-    interval = Interval.new(n1: n1, n2: n2, direction: Interval::DOWN)
-
-    expect(interval.quality).to eq(Interval::Quality::AUGMENTED)
-    expect(interval.letter_distance).to eq(0)
-    expect(interval.val_distance).to eq(1)
-    expect(interval.direction).to eq(Interval::DOWN)
-
-    n1 = Note.new(letter: 'F', quality: 'NATURAL')
-    n2 = Note.new(letter: 'F', quality: 'FLAT')
-    interval = Interval.new(n1: n1, n2: n2, direction: Interval::DOWN)
-
-    expect(interval.quality).to eq(Interval::Quality::AUGMENTED)
-    expect(interval.letter_distance).to eq(0)
-    expect(interval.val_distance).to eq(1)
-    expect(interval.direction).to eq(Interval::DOWN)
-
-    n1 = Note.new(letter: 'G', quality: 'NATURAL')
-    n2 = Note.new(letter: 'G', quality: 'SHARP')
-    interval = Interval.new(n1: n1, n2: n2, direction: Interval::DOWN)
-
-    expect(interval.quality).to eq(Interval::Quality::AUGMENTED)
-    expect(interval.letter_distance).to eq(0)
-    expect(interval.val_distance).to eq(1)
-    expect(interval.direction).to eq(Interval::DOWN)
-
-    n1 = Note.new(letter: 'A', quality: 'NATURAL')
-    n2 = Note.new(letter: 'A', quality: 'FLAT')
-    interval = Interval.new(n1: n1, n2: n2, direction: Interval::DOWN)
-
-    expect(interval.quality).to eq(Interval::Quality::AUGMENTED)
-    expect(interval.letter_distance).to eq(0)
-    expect(interval.val_distance).to eq(1)
-    expect(interval.direction).to eq(Interval::DOWN)
-
-    n1 = Note.new(letter: 'B', quality: 'NATURAL')
-    n2 = Note.new(letter: 'B', quality: 'SHARP')
-    interval = Interval.new(n1: n1, n2: n2, direction: Interval::DOWN)
-
-    expect(interval.quality).to eq(Interval::Quality::AUGMENTED)
-    expect(interval.letter_distance).to eq(0)
-    expect(interval.val_distance).to eq(1)
-    expect(interval.direction).to eq(Interval::DOWN)
+      expect(interval.quality).to eq(Interval::Quality::AUGMENTED)
+      expect(interval.letter_distance).to eq(0)
+      expect(interval.val_distance).to eq(1)
+      expect(interval.direction).to eq(Interval::DOWN)
+    end
   end
 
   it 'Calculates doublely Augmented Unison (AA1) up correctly' do
-    n1 = Note.new(letter: 'C', quality: 'NATURAL')
-    n2 = Note.new(letter: 'C', quality: 'D_SHARP')
-    interval = Interval.new(n1: n1, n2: n2)
+    note1 = [NOTE_C_NATURAL.dup, NOTE_D_NATURAL.dup, NOTE_E_NATURAL.dup, NOTE_F_NATURAL.dup, NOTE_G_NATURAL.dup, NOTE_A_NATURAL.dup, NOTE_B_NATURAL.dup]
+    note2 = [NOTE_C_D_SHARP.dup, NOTE_D_D_SHARP.dup, NOTE_E_D_SHARP.dup, NOTE_F_D_SHARP.dup, NOTE_G_D_SHARP.dup, NOTE_A_D_SHARP.dup, NOTE_B_D_SHARP.dup]
 
-    expect(interval.quality).to eq(Interval::Quality::D_AUGMENTED)
-    expect(interval.letter_distance).to eq(0)
-    expect(interval.val_distance).to eq(2)
-    expect(interval.direction).to eq(Interval::UP)
+    note1.zip(note2).each do |n1, n2|
+      interval = described_class.new(n1: n1, n2: n2)
 
-    n1 = Note.new(letter: 'D', quality: 'NATURAL')
-    n2 = Note.new(letter: 'D', quality: 'D_FLAT')
-    interval = Interval.new(n1: n1, n2: n2)
-
-    expect(interval.quality).to eq(Interval::Quality::D_AUGMENTED)
-    expect(interval.letter_distance).to eq(0)
-    expect(interval.val_distance).to eq(2)
-    expect(interval.direction).to eq(Interval::UP)
-
-    n1 = Note.new(letter: 'E', quality: 'NATURAL')
-    n2 = Note.new(letter: 'E', quality: 'D_SHARP')
-    interval = Interval.new(n1: n1, n2: n2)
-
-    expect(interval.quality).to eq(Interval::Quality::D_AUGMENTED)
-    expect(interval.letter_distance).to eq(0)
-    expect(interval.val_distance).to eq(2)
-    expect(interval.direction).to eq(Interval::UP)
-
-    n1 = Note.new(letter: 'F', quality: 'NATURAL')
-    n2 = Note.new(letter: 'F', quality: 'D_FLAT')
-    interval = Interval.new(n1: n1, n2: n2)
-
-    expect(interval.quality).to eq(Interval::Quality::D_AUGMENTED)
-    expect(interval.letter_distance).to eq(0)
-    expect(interval.val_distance).to eq(2)
-    expect(interval.direction).to eq(Interval::UP)
-
-    n1 = Note.new(letter: 'G', quality: 'NATURAL')
-    n2 = Note.new(letter: 'G', quality: 'D_SHARP')
-    interval = Interval.new(n1: n1, n2: n2)
-
-    expect(interval.quality).to eq(Interval::Quality::D_AUGMENTED)
-    expect(interval.letter_distance).to eq(0)
-    expect(interval.val_distance).to eq(2)
-    expect(interval.direction).to eq(Interval::UP)
-
-    n1 = Note.new(letter: 'A', quality: 'NATURAL')
-    n2 = Note.new(letter: 'A', quality: 'D_FLAT')
-    interval = Interval.new(n1: n1, n2: n2)
-
-    expect(interval.quality).to eq(Interval::Quality::D_AUGMENTED)
-    expect(interval.letter_distance).to eq(0)
-    expect(interval.val_distance).to eq(2)
-    expect(interval.direction).to eq(Interval::UP)
-
-    n1 = Note.new(letter: 'B', quality: 'NATURAL')
-    n2 = Note.new(letter: 'B', quality: 'D_SHARP')
-    interval = Interval.new(n1: n1, n2: n2)
-
-    expect(interval.quality).to eq(Interval::Quality::D_AUGMENTED)
-    expect(interval.letter_distance).to eq(0)
-    expect(interval.val_distance).to eq(2)
-    expect(interval.direction).to eq(Interval::UP)
+      expect(interval.quality).to eq(Interval::Quality::D_AUGMENTED)
+      expect(interval.letter_distance).to eq(0)
+      expect(interval.val_distance).to eq(2)
+      expect(interval.direction).to eq(Interval::UP)
+    end
   end
 
   it 'Calculates doublely Augmented Unison (AA1) down correctly' do
-    n1 = Note.new(letter: 'C', quality: 'NATURAL')
-    n2 = Note.new(letter: 'C', quality: 'D_SHARP')
-    interval = Interval.new(n1: n1, n2: n2, direction: Interval::DOWN)
+    note1 = [NOTE_C_NATURAL.dup, NOTE_D_NATURAL.dup, NOTE_E_NATURAL.dup, NOTE_F_NATURAL.dup, NOTE_G_NATURAL.dup, NOTE_A_NATURAL.dup, NOTE_B_NATURAL.dup]
+    note2 = [NOTE_C_D_SHARP.dup, NOTE_D_D_SHARP.dup, NOTE_E_D_SHARP.dup, NOTE_F_D_SHARP.dup, NOTE_G_D_SHARP.dup, NOTE_A_D_SHARP.dup, NOTE_B_D_SHARP.dup]
 
-    expect(interval.quality).to eq(Interval::Quality::D_AUGMENTED)
-    expect(interval.letter_distance).to eq(0)
-    expect(interval.val_distance).to eq(2)
-    expect(interval.direction).to eq(Interval::DOWN)
+    note1.zip(note2).each do |n1, n2|
+      interval = described_class.new(n1: n1, n2: n2, direction: Interval::DOWN)
 
-    n1 = Note.new(letter: 'D', quality: 'NATURAL')
-    n2 = Note.new(letter: 'D', quality: 'D_FLAT')
-    interval = Interval.new(n1: n1, n2: n2, direction: Interval::DOWN)
-
-    expect(interval.quality).to eq(Interval::Quality::D_AUGMENTED)
-    expect(interval.letter_distance).to eq(0)
-    expect(interval.val_distance).to eq(2)
-    expect(interval.direction).to eq(Interval::DOWN)
-
-    n1 = Note.new(letter: 'E', quality: 'NATURAL')
-    n2 = Note.new(letter: 'E', quality: 'D_SHARP')
-    interval = Interval.new(n1: n1, n2: n2, direction: Interval::DOWN)
-
-    expect(interval.quality).to eq(Interval::Quality::D_AUGMENTED)
-    expect(interval.letter_distance).to eq(0)
-    expect(interval.val_distance).to eq(2)
-    expect(interval.direction).to eq(Interval::DOWN)
-
-    n1 = Note.new(letter: 'F', quality: 'NATURAL')
-    n2 = Note.new(letter: 'F', quality: 'D_FLAT')
-    interval = Interval.new(n1: n1, n2: n2, direction: Interval::DOWN)
-
-    expect(interval.quality).to eq(Interval::Quality::D_AUGMENTED)
-    expect(interval.letter_distance).to eq(0)
-    expect(interval.val_distance).to eq(2)
-    expect(interval.direction).to eq(Interval::DOWN)
-
-    n1 = Note.new(letter: 'G', quality: 'NATURAL')
-    n2 = Note.new(letter: 'G', quality: 'D_SHARP')
-    interval = Interval.new(n1: n1, n2: n2, direction: Interval::DOWN)
-
-    expect(interval.quality).to eq(Interval::Quality::D_AUGMENTED)
-    expect(interval.letter_distance).to eq(0)
-    expect(interval.val_distance).to eq(2)
-    expect(interval.direction).to eq(Interval::DOWN)
-
-    n1 = Note.new(letter: 'A', quality: 'NATURAL')
-    n2 = Note.new(letter: 'A', quality: 'D_FLAT')
-    interval = Interval.new(n1: n1, n2: n2, direction: Interval::DOWN)
-
-    expect(interval.quality).to eq(Interval::Quality::D_AUGMENTED)
-    expect(interval.letter_distance).to eq(0)
-    expect(interval.val_distance).to eq(2)
-    expect(interval.direction).to eq(Interval::DOWN)
-
-    n1 = Note.new(letter: 'B', quality: 'NATURAL')
-    n2 = Note.new(letter: 'B', quality: 'D_SHARP')
-    interval = Interval.new(n1: n1, n2: n2, direction: Interval::DOWN)
-
-    expect(interval.quality).to eq(Interval::Quality::D_AUGMENTED)
-    expect(interval.letter_distance).to eq(0)
-    expect(interval.val_distance).to eq(2)
-    expect(interval.direction).to eq(Interval::DOWN)
+      expect(interval.quality).to eq(Interval::Quality::D_AUGMENTED)
+      expect(interval.letter_distance).to eq(0)
+      expect(interval.val_distance).to eq(2)
+      expect(interval.direction).to eq(Interval::DOWN)
+    end
   end
 end

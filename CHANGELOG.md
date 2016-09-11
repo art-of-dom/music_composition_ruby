@@ -1,3 +1,19 @@
+## 0.0.9 (September 10, 2016)
+
+Features:
+
+  - Added utils directory to extract common functionalities from core code
+  - Added utils/array_helper.rb
+  - Added Fuubar gem to development dependencies 
+  - Added rubocop-rspec to development dependencies
+
+Clean-up:
+
+  - Simplified test logic with use of rubocop-rspec
+  - Fixed sevral rubocop & rubocop-rspec offences
+
+
+
 ## 0.0.8 (August 24, 2016)
 
 Features:

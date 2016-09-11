@@ -69,18 +69,16 @@ module MusicComposition
     # Creates an interval based on two notes and a direction.
     def initialize(n1: nil, n2: nil, direction: UP)
       @note1 = n1
-      raise ArgumentError unless @note1
       @note2 = n2
-      raise ArgumentError unless @note2
+      raise ArgumentError unless @note1 && @note2
       @direction = direction
 
-      set_distance
+      ref, comp = ref_comp_notes
+      set_distance(ref, comp)
       set_quality
     end
 
-    def set_distance
-      ref, comp = ref_comp_notes
-
+    def set_distance(ref, comp)
       @letter_distance = ((comp.letter[0] - ref.letter[0]) + 7) % 7
       @val_distance = comp.val - ref.val
       unison_correcter if @letter_distance.zero?

@@ -42,12 +42,13 @@ module MusicComposition
     # Creates a scale given a root note and the name
     # of the scale.
     def initialize(root: nil, name: nil)
-      raise ArgumentError unless root
-      raise ArgumentError unless name
+      raise ArgumentError unless root && name
       @name = name
       tmp_pattern, ref_scale = find_pattern_base_pattern
       @pattern = correct_pattern(tmp_pattern, ref_scale)
-      build_notes root
+      @notes = Array.new(0)
+      @notes.push(root)
+      build_scale
     end
 
     def find_pattern_base_pattern
@@ -69,9 +70,7 @@ module MusicComposition
       tmp_pattern
     end
 
-    def build_notes(root)
-      @notes = Array.new(0)
-      @notes.push(root)
+    def build_scale
       id_index = Note::Letter::ID_INDEX
       name_index = Note::Letter::NAME_INDEX
       @pattern.each do |pattern|
@@ -82,6 +81,6 @@ module MusicComposition
       end
     end
 
-    private :find_pattern_base_pattern, :correct_pattern, :build_notes
+    private :find_pattern_base_pattern, :correct_pattern, :build_scale
   end
 end

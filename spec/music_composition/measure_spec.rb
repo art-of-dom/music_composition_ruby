@@ -5,19 +5,9 @@ require 'music_composition/defines/note_defines'
 require 'music_composition/defines/duration_defines'
 include MusicComposition
 
-describe Measure::Type do
-  it 'Has correct type enums defined as keys' do
-    expect(Measure::Type.keys).to eq [:FIXED, :VARIABLE, :UNDEFINED]
-  end
-
-  it 'Has correct type enums defined as values' do
-    expect(Measure::Type.values).to eq [0, 1, 2]
-  end
-end
-
 describe Measure do
   it 'Creates a null measure of fixed type defaultly' do
-    measure = Measure.new
+    measure = described_class.new
     expect(measure.type).to eq Measure::Type::FIXED
     expect(measure.length).to eq Duration::Value::QUARTER * 4
     expect(measure.durs[0].val).to eq Duration::Value::QUARTER * 4
@@ -28,7 +18,7 @@ describe Measure do
   it 'Fills measure in fixed type if total duration is not full measure' do
     a_note = NOTE_A_NATURAL.dup
     q_note_dur = DUR_QUARTER_NOTE.dup
-    measure = Measure.new(durs: [q_note_dur], notes: [a_note])
+    measure = described_class.new(durs: [q_note_dur], notes: [a_note])
     expect(measure.type).to eq Measure::Type::FIXED
     expect(measure.length).to eq Duration::Value::QUARTER * 4
     expect(measure.durs[0]).to eq q_note_dur
@@ -42,7 +32,7 @@ describe Measure do
     b_note = NOTE_B_NATURAL.dup
     q_note_dur = DUR_QUARTER_NOTE.dup
     w_note_dur = DUR_WHOLE_NOTE.dup
-    measure = Measure.new(durs: [q_note_dur, w_note_dur], notes: [a_note, b_note])
+    measure = described_class.new(durs: [q_note_dur, w_note_dur], notes: [a_note, b_note])
     expect(measure.type).to eq Measure::Type::FIXED
     expect(measure.length).to eq Duration::Value::QUARTER * 4
     expect(measure.durs[0]).to eq q_note_dur
@@ -60,7 +50,7 @@ describe Measure do
     d_note = NOTE_D_NATURAL.dup
     q_note_dur = DUR_QUARTER_NOTE.dup
     h_note_dur = DUR_HALF_NOTE.dup
-    measure = Measure.new(durs: [h_note_dur, h_note_dur, q_note_dur, q_note_dur], notes: [a_note, b_note, c_note, d_note])
+    measure = described_class.new(durs: [h_note_dur, h_note_dur, q_note_dur, q_note_dur], notes: [a_note, b_note, c_note, d_note])
     expect(measure.type).to eq Measure::Type::FIXED
     expect(measure.length).to eq Duration::Value::QUARTER * 4
     expect(measure.durs).to eq [h_note_dur, h_note_dur]
@@ -76,7 +66,7 @@ describe Measure do
     c_note = NOTE_C_NATURAL.dup
     q_note_dur = DUR_QUARTER_NOTE.dup
     w_note_dur = DUR_WHOLE_NOTE.dup
-    measure = Measure.new(durs: [q_note_dur, w_note_dur, q_note_dur], notes: [a_note, b_note, c_note])
+    measure = described_class.new(durs: [q_note_dur, w_note_dur, q_note_dur], notes: [a_note, b_note, c_note])
     expect(measure.type).to eq Measure::Type::FIXED
     expect(measure.length).to eq Duration::Value::QUARTER * 4
     expect(measure.durs[0]).to eq q_note_dur
@@ -91,7 +81,7 @@ describe Measure do
   it 'Given a full measure just passes the values in a fixed measure' do
     a_note = NOTE_A_NATURAL.dup
     w_note_dur = DUR_WHOLE_NOTE.dup
-    measure = Measure.new(durs: [w_note_dur], notes: [a_note])
+    measure = described_class.new(durs: [w_note_dur], notes: [a_note])
     expect(measure.type).to eq Measure::Type::FIXED
     expect(measure.length).to eq Duration::Value::QUARTER * 4
     expect(measure.durs).to eq [w_note_dur]

@@ -1,5 +1,7 @@
 # This is the configuration used to check the rubocop source code.
 
+require: rubocop-rspec
+
 inherit_from: .rubocop_todo.yml
 
 AllCops:
@@ -9,19 +11,33 @@ AllCops:
     - 'tmp/**/*'
   TargetRubyVersion: 2.1
 
-#Metrics/AbcSize:
-#    Max: 18
+RSpec/ExampleLength:
+    Max: 27
 
-Metrics/CyclomaticComplexity:
-  Max: 7
+RSpec/MultipleExpectations:
+  Max: 28
+
+RSpec/DescribedClass:
+  Exclude:
+    - 'spec/music_composition/version_spec.rb'
+
+
+RSpec/FilePath:
+  Exclude:
+    - 'spec/music_composition/note_letter_spec.rb'
+    - 'spec/music_composition/note_quality_spec.rb'
+    - 'spec/music_composition/duration_type_spec.rb'
+    - 'spec/music_composition/duration_value_spec.rb'
+    - 'spec/music_composition/interval_quality_spec.rb'
+    - 'spec/music_composition/measure_type_spec.rb'
+    - 'spec/music_composition/scale_pattern_spec.rb'
+
 
 Metrics/LineLength:
   Exclude:
     - 'spec/**/*'
     - 'music_composition.gemspec'
 
-Metrics/PerceivedComplexity:
-  Max: 8
 
 Style/ConstantName:
   Exclude:

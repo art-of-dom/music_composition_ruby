@@ -1,12 +1,14 @@
 # encoding: utf-8
 # frozen_string_literal: true
 require 'ruby-enum'
+require 'utils/array_helper'
 
 module MusicComposition
   ##
   # The basic representation of a measure containing
   # an array of notes and durations.
   class Measure
+    include Utils::ArrayHelper
     ##
     # The type of measure.
     class Type
@@ -30,18 +32,13 @@ module MusicComposition
 
     def initialize(notes: nil, durs: nil, type: Type::FIXED, \
                    length: (Duration::Value::QUARTER * 4))
-      @notes = if notes
-                 Array.new(notes)
-               else
-                 []
-               end
-      @durs = if durs
-                Array.new(durs)
-              else
-                []
-              end
+      @notes = null_check_init(notes)
+      @durs = null_check_init(durs)
       @type = type
       @length = length
+
+      @excess_notes = []
+      @excess_durs = []
       measure_check
     end
 
@@ -61,8 +58,6 @@ module MusicComposition
       if sum - @length < 0
         fill_measure sum
       elsif sum - @length > 0
-        @excess_notes = []
-        @excess_durs = []
         while sum - @length > 0
           empty_measure sum
           sum = @durs.map(&:val).reduce(0, :+)
@@ -86,13 +81,17 @@ module MusicComposition
     def empty_measure(sum)
       # If the last duration is causing the overflow, shorten it
       if sum - @length - @durs[-1].val < 0
-        @excess_notes.unshift(@notes[-1])
-        @excess_durs.unshift(Duration.new(raw: sum - @length))
-        @durs[-1] = Duration.new(raw: @durs[-1].val - @excess_durs[-1].val)
+        cut_excess sum
       else
         @excess_notes.unshift(@notes.pop)
         @excess_durs.unshift(@durs.pop)
       end
+    end
+
+    def cut_excess(sum)
+      @excess_notes.unshift(@notes[-1])
+      @excess_durs.unshift(Duration.new(raw:  sum - @length))
+      @durs[-1] = Duration.new(raw: @durs[-1].val - @excess_durs[-1].val)
     end
   end
 end
