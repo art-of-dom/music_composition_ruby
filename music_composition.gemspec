@@ -10,9 +10,9 @@ Gem::Specification.new do |spec|
   spec.authors       = ['Dom Postorivo']
   spec.email         = ['depostorivo@gmail.com']
 
-  spec.summary       = 'A music notation/theory/performance gem.'
-  #  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  #  spec.homepage      = "TODO: "
+  spec.summary       = 'A music composition gem focused on theory, notation, and performance.'
+  spec.description   = 'The creation of music takes form in many differnt ways and the goal of this gem is to provide a set of tools for whatever angle you aproch it while offering many other you can experiment with. '
+  spec.homepage      = 'https://github.com/dpostorivo'
   spec.licenses      = ['MIT']
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
   # to allow pushing to a single host or delete this section to allow pushing to any host.
@@ -34,7 +34,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rspec', '~> 3.0'
   spec.add_development_dependency 'rubocop'
   spec.add_development_dependency 'rubocop-rspec'
-  spec.add_development_dependency 'simplecov' 
+  spec.add_development_dependency 'simplecov'
 
   spec.add_dependency 'ruby-enum', '~> 0.5'
 end

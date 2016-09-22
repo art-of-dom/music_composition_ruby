@@ -69,4 +69,16 @@ describe Note::Quality do
     expect(Note::Quality::D_SHARP[Note::Quality::VAL_INDEX]).to eq(2)
     expect(Note::Quality::D_SHARP[Note::Quality::NAME_INDEX]).to eq('𝄪')
   end
+
+  describe '.max_val' do
+    it 'returns the current max value found in the enum' do
+      expect(described_class.max_val).to eq(2)
+    end
+  end
+
+  describe '.min_val' do
+    it 'returns the current min value found in the enum' do
+      expect(described_class.min_val).to eq(-2)
+    end
+  end
 end

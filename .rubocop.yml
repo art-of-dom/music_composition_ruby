@@ -11,6 +11,10 @@ AllCops:
     - 'tmp/**/*'
   TargetRubyVersion: 2.1
 
+Style/AsciiComments:
+  Exclude:
+    - 'lib/music_composition/notation/note.rb'
+
 RSpec/ExampleLength:
     Max: 27
 
@@ -35,7 +39,7 @@ RSpec/FilePath:
 
 Metrics/LineLength:
   Exclude:
-    - 'spec/**/*'
+    - 'spec/music_composition/**/*'
     - 'music_composition.gemspec'
 
 

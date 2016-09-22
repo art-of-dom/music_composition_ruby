@@ -211,4 +211,160 @@ describe Note do
       expect(n.val).to eq(val)
     end
   end
+
+  describe '#name' do
+    it 'returns correct name for double flat notes' do
+      LETTER_ARRAY.each do |letter|
+        note = described_class.new(letter: letter, quality: 'D_FLAT')
+        expect(note.name).to eq(String.new(letter).concat('𝄫'))
+      end
+    end
+
+    it 'returns correct name for flat notes' do
+      LETTER_ARRAY.each do |letter|
+        note = described_class.new(letter: letter, quality: 'FLAT')
+        expect(note.name).to eq(String.new(letter).concat('♭'))
+      end
+    end
+
+    it 'returns correct name for natural notes' do
+      LETTER_ARRAY.each do |letter|
+        note = described_class.new(letter: letter, quality: 'NATURAL')
+        expect(note.name).to eq(letter)
+      end
+    end
+
+    it 'returns correct name for sharp notes' do
+      LETTER_ARRAY.each do |letter|
+        note = described_class.new(letter: letter, quality: 'SHARP')
+        expect(note.name).to eq(String.new(letter).concat('♯'))
+      end
+    end
+
+    it 'returns correct name for double sharp notes' do
+      LETTER_ARRAY.each do |letter|
+        note = described_class.new(letter: letter, quality: 'D_SHARP')
+        expect(note.name).to eq(String.new(letter).concat('𝄪'))
+      end
+    end
+
+    it 'returns correct name for double flat notes with octave' do
+      -5.upto(10) do |i|
+        LETTER_ARRAY.each do |letter|
+          note = described_class.new(letter: letter, quality: 'D_FLAT')
+          note.octave = i
+          expect(note.name).to eq(String.new(letter).concat('𝄫').concat(i.to_s))
+        end
+      end
+    end
+
+    it 'returns correct name for flat notes with octave' do
+      -5.upto(10) do |i|
+        LETTER_ARRAY.each do |letter|
+          note = described_class.new(letter: letter, quality: 'FLAT')
+          note.octave = i
+          expect(note.name).to eq(String.new(letter).concat('♭').concat(i.to_s))
+        end
+      end
+    end
+
+    it 'returns correct name for natural notes' do
+      -5.upto(10) do |i|
+        LETTER_ARRAY.each do |letter|
+          note = described_class.new(letter: letter, quality: 'NATURAL')
+          note.octave = i
+          expect(note.name).to eq(String.new(letter).concat(i.to_s))
+        end
+      end
+    end
+
+    it 'returns correct name for sharp notes with octave' do
+      -5.upto(10) do |i|
+        LETTER_ARRAY.each do |letter|
+          note = described_class.new(letter: letter, quality: 'SHARP')
+          note.octave = i
+          expect(note.name).to eq(String.new(letter).concat('♯').concat(i.to_s))
+        end
+      end
+    end
+
+    it 'returns correct name for double sharp notes with octave' do
+      -5.upto(10) do |i|
+        LETTER_ARRAY.each do |letter|
+          note = described_class.new(letter: letter, quality: 'D_SHARP')
+          note.octave = i
+          expect(note.name).to eq(String.new(letter).concat('𝄪').concat(i.to_s))
+        end
+      end
+    end
+  end
+
+  describe '#note_equal?' do
+    it 'returns true for equal notes' do
+      n1 = described_class.new(letter: 'A', quality: 'SHARP')
+      n2 = described_class.new(val: 10, quality: 'SHARP')
+      expect(n1.note_equal?(n2)).to be true
+      expect(n2.note_equal?(n1)).to be true
+    end
+
+    it 'returns false for notes that are not equal' do
+      n1 = described_class.new(letter: 'A', quality: 'SHARP')
+      n2 = described_class.new(val: 10, quality: 'FLAT')
+      expect(n1.note_equal?(n2)).to be false
+      expect(n2.note_equal?(n1)).to be false
+    end
+  end
+
+  describe '#note_equivalent?' do
+    it 'returns true for equivalent notes' do
+      n1 = described_class.new(letter: 'A', quality: 'SHARP')
+      n2 = described_class.new(val: 10, quality: 'FLAT')
+      expect(n1.note_equivalent?(n2)).to be true
+      expect(n2.note_equivalent?(n1)).to be true
+    end
+
+    it 'returns false for notes that are not equivalent' do
+      n1 = described_class.new(letter: 'A', quality: 'SHARP')
+      n2 = described_class.new(val: 8, quality: 'FLAT')
+      expect(n1.note_equal?(n2)).to be false
+      expect(n2.note_equal?(n1)).to be false
+    end
+  end
+
+  describe '#transform_to_equivalent' do
+    it 'keeps the note the same if input is 0' do
+      n1 = described_class.new(letter: 'A', quality: 'SHARP')
+      n2 = described_class.new(letter: 'A', quality: 'SHARP')
+      n1.transform_to_equivalent(0)
+      expect(n1.note_equal?(n2)).to be true
+    end
+
+    it 'turns note into an enharmonic equivalent one letter above' do
+      n1 = described_class.new(letter: 'A', quality: 'SHARP')
+      n2 = described_class.new(letter: 'B', quality: 'FLAT')
+      n1.transform_to_equivalent(1)
+      expect(n1.note_equal?(n2)).to be true
+    end
+
+    it 'turns note into an enharmonic equivalent one letter below' do
+      n1 = described_class.new(letter: 'A', quality: 'SHARP')
+      n2 = described_class.new(letter: 'B', quality: 'FLAT')
+      n2.transform_to_equivalent(-1)
+      expect(n2.note_equal?(n1)).to be true
+    end
+
+    it 'turns note into an enharmonic equivalent two letters above' do
+      n1 = described_class.new(letter: 'A', quality: 'SHARP')
+      n2 = described_class.new(letter: 'C', quality: 'D_FLAT')
+      n1.transform_to_equivalent(2)
+      expect(n1.note_equal?(n2)).to be true
+    end
+
+    it 'turns note into an enharmonic equivalent two letters below' do
+      n1 = described_class.new(letter: 'A', quality: 'SHARP')
+      n2 = described_class.new(letter: 'C', quality: 'D_FLAT')
+      n2.transform_to_equivalent(-2)
+      expect(n2.note_equal?(n1)).to be true
+    end
+  end
 end

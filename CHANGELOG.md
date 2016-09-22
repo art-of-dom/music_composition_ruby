@@ -1,3 +1,12 @@
+## 0.0.10 (September 21, 2016)
+
+Features:
+
+  - Added methods note_equal?, note_equivalent?, name, and transform_to_equivalent to notation/note.rb.
+  - Started formatting travis.yaml for CI.
+  - Updated gem description and info in music_composition.gemspec
+
+
 ## 0.0.9 (September 10, 2016)
 
 Features:
@@ -11,8 +20,6 @@ Clean-up:
 
   - Simplified test logic with use of rubocop-rspec
   - Fixed sevral rubocop & rubocop-rspec offences
-
-
 
 ## 0.0.8 (August 24, 2016)
 
