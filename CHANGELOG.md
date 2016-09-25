@@ -1,3 +1,12 @@
+## 0.0.11 (September 24, 2016)
+
+Features:
+  - Added Baroque reference pitch.
+  - Added other internal defines to simplify calc_frequency logic.
+
+Refactoring:
+  - Added more options to notation/pitch.rb calc_frequency for more options.
+
 ## 0.0.10 (September 21, 2016)
 
 Features:
