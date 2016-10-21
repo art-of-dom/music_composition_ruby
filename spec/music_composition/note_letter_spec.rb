@@ -81,4 +81,16 @@ describe Note::Letter do
     expect(Note::Letter::G[Note::Letter::BASE_VAL_INDEX]).to eq(7)
     expect(Note::Letter::G[Note::Letter::NAME_INDEX]).to eq('G')
   end
+
+  describe '.find_by_id' do
+    it 'finds correct letter given an id' do
+      expect(described_class.find_by_id(2)).to eq([2, 0, 'C'])
+    end
+  end
+
+  describe '.find_by_val' do
+    it 'finds correct letter given an value' do
+      expect(described_class.find_by_val(0)).to eq([2, 0, 'C'])
+    end
+  end
 end

@@ -1,3 +1,16 @@
+## 0.0.12 (October 20, 2016)
+
+Features:
+  - Added methods interval_equal?, interval_equivalent?, name, and invert to
+    theory/interval.rb.
+  - Updated dev dependences and added inch.
+  - Added extra internal methods for enums for looking them up by value.
+
+Refactoring:
+  - Added more options to theory/interval.rb including now handling octaves and
+    extended intervals.
+
+
 ## 0.0.11 (September 24, 2016)
 
 Features:
@@ -12,7 +25,7 @@ Refactoring:
 Features:
 
   - Added methods note_equal?, note_equivalent?, name, and transform_to_equivalent to notation/note.rb.
-  - Started formatting travis.yaml for CI.
+  - Started formatting travis.yml for CI.
   - Updated gem description and info in music_composition.gemspec
 
 

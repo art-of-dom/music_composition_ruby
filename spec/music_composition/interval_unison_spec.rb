@@ -5,10 +5,7 @@ include MusicComposition
 
 describe Interval do
   it 'Calculates Perfect Unison (P1) up correctly' do
-    note1 = [NOTE_C_NATURAL.dup, NOTE_D_NATURAL.dup, NOTE_E_NATURAL.dup, NOTE_F_NATURAL.dup, NOTE_G_NATURAL.dup, NOTE_A_NATURAL.dup, NOTE_B_NATURAL.dup]
-    note2 = [NOTE_C_NATURAL.dup, NOTE_D_NATURAL.dup, NOTE_E_NATURAL.dup, NOTE_F_NATURAL.dup, NOTE_G_NATURAL.dup, NOTE_A_NATURAL.dup, NOTE_B_NATURAL.dup]
-
-    note1.zip(note2).each do |n1, n2|
+    NATURAL_NOTE_ARRAY.zip(NATURAL_NOTE_ARRAY).each do |n1, n2|
       interval = described_class.new(n1: n1, n2: n2)
 
       expect(interval.quality).to eq(Interval::Quality::PERFECT)
@@ -19,10 +16,7 @@ describe Interval do
   end
 
   it 'Calculates Perfect Unison (P1) down correctly' do
-    note1 = [NOTE_C_NATURAL.dup, NOTE_D_NATURAL.dup, NOTE_E_NATURAL.dup, NOTE_F_NATURAL.dup, NOTE_G_NATURAL.dup, NOTE_A_NATURAL.dup, NOTE_B_NATURAL.dup]
-    note2 = [NOTE_C_NATURAL.dup, NOTE_D_NATURAL.dup, NOTE_E_NATURAL.dup, NOTE_F_NATURAL.dup, NOTE_G_NATURAL.dup, NOTE_A_NATURAL.dup, NOTE_B_NATURAL.dup]
-
-    note1.zip(note2).each do |n1, n2|
+    NATURAL_NOTE_ARRAY.zip(NATURAL_NOTE_ARRAY).each do |n1, n2|
       interval = described_class.new(n1: n1, n2: n2, direction: Interval::DOWN)
 
       expect(interval.quality).to eq(Interval::Quality::PERFECT)
@@ -33,10 +27,11 @@ describe Interval do
   end
 
   it 'Calculates Augmented Unison (A1) up correctly' do
-    note1 = [NOTE_C_NATURAL.dup, NOTE_D_NATURAL.dup, NOTE_E_NATURAL.dup, NOTE_F_NATURAL.dup, NOTE_G_NATURAL.dup, NOTE_A_NATURAL.dup, NOTE_B_NATURAL.dup]
-    note2 = [NOTE_C_SHARP.dup, NOTE_D_SHARP.dup, NOTE_E_SHARP.dup, NOTE_F_SHARP.dup, NOTE_G_SHARP.dup, NOTE_A_SHARP.dup, NOTE_B_SHARP.dup]
+    note2 = [NOTE_C_SHARP.dup, NOTE_D_SHARP.dup, NOTE_E_SHARP.dup,\
+             NOTE_F_SHARP.dup, NOTE_G_SHARP.dup, NOTE_A_SHARP.dup,\
+             NOTE_B_SHARP.dup]
 
-    note1.zip(note2).each do |n1, n2|
+    NATURAL_NOTE_ARRAY.zip(note2).each do |n1, n2|
       interval = described_class.new(n1: n1, n2: n2)
 
       expect(interval.quality).to eq(Interval::Quality::AUGMENTED)
@@ -47,10 +42,11 @@ describe Interval do
   end
 
   it 'Calculates Augmented Unison (A1) down correctly' do
-    note1 = [NOTE_C_NATURAL.dup, NOTE_D_NATURAL.dup, NOTE_E_NATURAL.dup, NOTE_F_NATURAL.dup, NOTE_G_NATURAL.dup, NOTE_A_NATURAL.dup, NOTE_B_NATURAL.dup]
-    note2 = [NOTE_C_SHARP.dup, NOTE_D_SHARP.dup, NOTE_E_SHARP.dup, NOTE_F_SHARP.dup, NOTE_G_SHARP.dup, NOTE_A_SHARP.dup, NOTE_B_SHARP.dup]
+    note2 = [NOTE_C_SHARP.dup, NOTE_D_SHARP.dup, NOTE_E_SHARP.dup,\
+             NOTE_F_SHARP.dup, NOTE_G_SHARP.dup, NOTE_A_SHARP.dup,\
+             NOTE_B_SHARP.dup]
 
-    note1.zip(note2).each do |n1, n2|
+    NATURAL_NOTE_ARRAY.zip(note2).each do |n1, n2|
       interval = described_class.new(n1: n1, n2: n2, direction: Interval::DOWN)
 
       expect(interval.quality).to eq(Interval::Quality::AUGMENTED)
@@ -61,10 +57,11 @@ describe Interval do
   end
 
   it 'Calculates doublely Augmented Unison (AA1) up correctly' do
-    note1 = [NOTE_C_NATURAL.dup, NOTE_D_NATURAL.dup, NOTE_E_NATURAL.dup, NOTE_F_NATURAL.dup, NOTE_G_NATURAL.dup, NOTE_A_NATURAL.dup, NOTE_B_NATURAL.dup]
-    note2 = [NOTE_C_D_SHARP.dup, NOTE_D_D_SHARP.dup, NOTE_E_D_SHARP.dup, NOTE_F_D_SHARP.dup, NOTE_G_D_SHARP.dup, NOTE_A_D_SHARP.dup, NOTE_B_D_SHARP.dup]
+    note2 = [NOTE_C_D_SHARP.dup, NOTE_D_D_SHARP.dup, NOTE_E_D_SHARP.dup,\
+             NOTE_F_D_SHARP.dup, NOTE_G_D_SHARP.dup, NOTE_A_D_SHARP.dup,\
+             NOTE_B_D_SHARP.dup]
 
-    note1.zip(note2).each do |n1, n2|
+    NATURAL_NOTE_ARRAY.zip(note2).each do |n1, n2|
       interval = described_class.new(n1: n1, n2: n2)
 
       expect(interval.quality).to eq(Interval::Quality::D_AUGMENTED)
@@ -75,10 +72,11 @@ describe Interval do
   end
 
   it 'Calculates doublely Augmented Unison (AA1) down correctly' do
-    note1 = [NOTE_C_NATURAL.dup, NOTE_D_NATURAL.dup, NOTE_E_NATURAL.dup, NOTE_F_NATURAL.dup, NOTE_G_NATURAL.dup, NOTE_A_NATURAL.dup, NOTE_B_NATURAL.dup]
-    note2 = [NOTE_C_D_SHARP.dup, NOTE_D_D_SHARP.dup, NOTE_E_D_SHARP.dup, NOTE_F_D_SHARP.dup, NOTE_G_D_SHARP.dup, NOTE_A_D_SHARP.dup, NOTE_B_D_SHARP.dup]
+    note2 = [NOTE_C_D_SHARP.dup, NOTE_D_D_SHARP.dup, NOTE_E_D_SHARP.dup,\
+             NOTE_F_D_SHARP.dup, NOTE_G_D_SHARP.dup, NOTE_A_D_SHARP.dup,\
+             NOTE_B_D_SHARP.dup]
 
-    note1.zip(note2).each do |n1, n2|
+    NATURAL_NOTE_ARRAY.zip(note2).each do |n1, n2|
       interval = described_class.new(n1: n1, n2: n2, direction: Interval::DOWN)
 
       expect(interval.quality).to eq(Interval::Quality::D_AUGMENTED)

@@ -48,8 +48,10 @@ module MusicComposition
         fixed_measure_check
       when Type::VARIABLE
         # variable_measure_check
+        true
       when Type::UNDEFINED
         # undefined_measure_check
+        true
       end
     end
 
@@ -90,7 +92,7 @@ module MusicComposition
 
     def cut_excess(sum)
       @excess_notes.unshift(@notes[-1])
-      @excess_durs.unshift(Duration.new(raw:  sum - @length))
+      @excess_durs.unshift(Duration.new(raw: sum - @length))
       @durs[-1] = Duration.new(raw: @durs[-1].val - @excess_durs[-1].val)
     end
   end

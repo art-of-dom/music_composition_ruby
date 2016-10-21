@@ -299,6 +299,27 @@ describe Note do
     end
   end
 
+  describe '#letter_id' do
+    note = described_class.new(letter: 'A', quality: 'NATURAL')
+    it 'gives correct letter ID' do
+      expect(note.letter_id).to eq(0)
+    end
+  end
+
+  describe '#letter_name' do
+    note = described_class.new(letter: 'A', quality: 'NATURAL')
+    it 'gives correct letter name' do
+      expect(note.letter_name).to eq('A')
+    end
+  end
+
+  describe '#letter_val' do
+    note = described_class.new(letter: 'A', quality: 'NATURAL')
+    it 'gives correct letter value' do
+      expect(note.letter_val).to eq(9)
+    end
+  end
+
   describe '#note_equal?' do
     it 'returns true for equal notes' do
       n1 = described_class.new(letter: 'A', quality: 'SHARP')

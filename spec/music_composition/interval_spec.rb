@@ -5,16 +5,14 @@ include MusicComposition
 
 describe Interval do
   it 'Raises ArgumentError if both notes are not present' do
-    n = Note.new(letter: 'C', quality: 'D_SHARP')
-
     expect { described_class.new }.to raise_error ArgumentError
-    expect { described_class.new(n1: n) }.to raise_error ArgumentError
-    expect { described_class.new(n2: n) }.to raise_error ArgumentError
+    expect { described_class.new(n1: NOTE_C_NATURAL.dup) }.to raise_error ArgumentError
+    expect { described_class.new(n2: NOTE_C_NATURAL.dup) }.to raise_error ArgumentError
   end
 
   it 'Raises ArgumentError in ref_comp_notes if direction nil' do
-    n = Note.new(letter: 'C', quality: 'D_SHARP')
-    interval = described_class.new(n1: n, n2: n)
+    interval = described_class.new(n1: NOTE_C_NATURAL.dup,\
+                                   n2: NOTE_C_NATURAL.dup)
 
     interval.instance_variable_set(:@direction, nil)
     expect(interval.direction).to eq(nil)
@@ -23,8 +21,8 @@ describe Interval do
   end
 
   it 'Raises ArgumentError in letter_distance_to_val if letter_distance is nil' do
-    n = Note.new(letter: 'C', quality: 'D_SHARP')
-    interval = described_class.new(n1: n, n2: n)
+    interval = described_class.new(n1: NOTE_C_NATURAL.dup,\
+                                   n2: NOTE_C_NATURAL.dup)
 
     interval.instance_variable_set(:@letter_distance, nil)
     expect(interval.letter_distance).to eq(nil)
@@ -33,12 +31,57 @@ describe Interval do
   end
 
   it 'Raises ArgumentError in index_lookup if letter_distance is nil' do
-    n = Note.new(letter: 'C', quality: 'D_SHARP')
-    interval = described_class.new(n1: n, n2: n)
+    interval = described_class.new(n1: NOTE_C_NATURAL.dup,\
+                                   n2: NOTE_C_NATURAL.dup)
 
     interval.instance_variable_set(:@letter_distance, nil)
     expect(interval.letter_distance).to eq(nil)
 
     expect { interval.send(:index_lookup) }.to raise_error ArgumentError
+  end
+
+  interval1 = described_class.new(n1: NOTE_C_NATURAL.dup,\
+                                  n2: NOTE_D_NATURAL.dup)
+  interval2 = described_class.new(n1: NOTE_D_NATURAL.dup,\
+                                  n2: NOTE_E_NATURAL.dup)
+  interval3 = described_class.new(n1: NOTE_C_NATURAL.dup,\
+                                  n2: NOTE_E_D_FLAT.dup)
+  interval4 = described_class.new(n1: NOTE_C_NATURAL.dup,\
+                                  n2: NOTE_E_NATURAL.dup)
+  describe '#interval_equal?' do
+    it 'returns true for equal intervals' do
+      expect(interval1.interval_equal?(interval2)).to be_truthy
+    end
+
+    it 'returns false for intervals that are not equal' do
+      expect(interval1.interval_equal?(interval3)).to be_falsey
+      expect(interval1.interval_equal?(interval4)).to be_falsey
+    end
+  end
+
+  describe '#interval_equivalent?' do
+    it 'returns true for equivalent intervals' do
+      expect(interval1.interval_equivalent?(interval2)).to be_truthy
+      expect(interval1.interval_equivalent?(interval3)).to be_truthy
+    end
+
+    it 'returns false for intervals that are not equivalent' do
+      expect(interval1.interval_equivalent?(interval4)).to be_falsey
+    end
+  end
+
+  describe '#invert' do
+    it 'inverts intervals correctly' do
+      interval1.invert
+      expect(interval1.quality).to eq(Interval::Quality::MINOR)
+      expect(interval1.letter_distance).to eq(6)
+      expect(interval1.val_distance).to eq(10)
+    end
+  end
+
+  describe '#name' do
+    it 'gives the correct name for the interval' do
+      expect(interval2.name).to eq('M2')
+    end
   end
 end

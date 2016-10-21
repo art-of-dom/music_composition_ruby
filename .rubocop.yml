@@ -14,10 +14,10 @@ Style/AsciiComments:
     - 'lib/music_composition/notation/note.rb'
 
 RSpec/ExampleLength:
-    Max: 27
+    Max: 20
 
 RSpec/MultipleExpectations:
-  Max: 28
+  Max: 25
 
 RSpec/DescribedClass:
   Exclude:
@@ -37,7 +37,6 @@ RSpec/FilePath:
 
 Metrics/LineLength:
   Exclude:
-    - 'spec/music_composition/**/*'
     - 'music_composition.gemspec'
 
 
@@ -45,10 +44,16 @@ Style/ConstantName:
   Exclude:
     - 'spec/music_composition/defines/pitch_defines.rb'
 
+Style/Copyright:
+  Enabled: false
+
 Style/Documentation:
   Exclude:
     - 'spec/**/*'
     - 'test/**/*'
+
+Style/DocumentationMethod:
+  Enabled: false
 
 Style/Encoding:
   EnforcedStyle: always

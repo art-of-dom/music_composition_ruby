@@ -70,6 +70,12 @@ describe Note::Quality do
     expect(Note::Quality::D_SHARP[Note::Quality::NAME_INDEX]).to eq('𝄪')
   end
 
+  describe '.find_by_val' do
+    it 'finds correct quality given an value' do
+      expect(described_class.find_by_val(0)).to eq([0, '♮'])
+    end
+  end
+
   describe '.max_val' do
     it 'returns the current max value found in the enum' do
       expect(described_class.max_val).to eq(2)

@@ -35,6 +35,40 @@ module MusicComposition
       BASE_VAL_INDEX = 1
       # The index of the string or name of a given letter
       NAME_INDEX = 2
+
+      ##
+      # Finda a given letter using the id of the letter.
+      #
+      # ==== Attributes
+      #
+      # * +letter+ - The id of the letter to be looked up.
+      #
+      # ==== Examples
+      #
+      #    Note::Letter.find_by_id(0)   # => :A
+      #
+      def self.find_by_id(letter)
+        each do |_key, enum|
+          return enum.value if letter == enum.value[ID_INDEX]
+        end
+      end
+
+      ##
+      # Finda a given letter using the value of the letter.
+      #
+      # ==== Attributes
+      #
+      # * +letter+ - The value of the letter to be looked up.
+      #
+      # ==== Examples
+      #
+      #    Note::Letter.find_by_val(0)   # => :C
+      #
+      def self.find_by_val(letter)
+        each do |_key, enum|
+          return enum.value if letter == enum.value[BASE_VAL_INDEX]
+        end
+      end
     end
 
     ##
@@ -52,6 +86,23 @@ module MusicComposition
       VAL_INDEX  = 0
       # The index of the string or name of a given quality
       NAME_INDEX = 1
+
+      ##
+      # Finda a given quality using the value of the quality.
+      #
+      # ==== Attributes
+      #
+      # * +value+ - The value of the quality to be looked up.
+      #
+      # ==== Examples
+      #
+      #    Note::Quality.find_by_val(0)   # => :NATURAL
+      #
+      def self.find_by_val(quality)
+        each do |_key, enum|
+          return enum.value if quality == enum.value[VAL_INDEX]
+        end
+      end
 
       ##
       # Finds the maximum quality value to determine maximum alteration. Used
@@ -92,6 +143,7 @@ module MusicComposition
     # manual entry errors.
     #
     # ==== Attributes
+    #
     # * +letter+ - The letter of the note to be created as a string of
     # the Note::Letter enum defines. Initialized to nil.
     # * +quality+ - The quality of the note to be created as a string of the
@@ -122,6 +174,42 @@ module MusicComposition
       @val = val % SEMITONES_PER_OCTAVE if val
 
       set_vars
+    end
+
+    ##
+    # Returns the id of the letter of the note.
+    #
+    # ==== Examples
+    #
+    #    note = Note.new(letter: 'A', quality: 'NATURAL')
+    #    note.letter_id # => 0
+    #
+    def letter_id
+      @letter[Letter::ID_INDEX]
+    end
+
+    ##
+    # Returns the name of the letter of the note.
+    #
+    # ==== Examples
+    #
+    #    note = Note.new(letter: 'A', quality: 'NATURAL')
+    #    note.letter_name # => 'A'
+    #
+    def letter_name
+      @letter[Letter::NAME_INDEX]
+    end
+
+    ##
+    # Returns the raw value given to the letter of the note.
+    #
+    # ==== Examples
+    #
+    #    note = Note.new(letter: 'A', quality: 'NATURAL')
+    #    note.letter_val # => 9
+    #
+    def letter_val
+      @letter[Letter::BASE_VAL_INDEX]
     end
 
     ##
@@ -160,9 +248,9 @@ module MusicComposition
     #    note5.name   # => 'E𝄫2'
     #
     def name
-      note_name = String.new(@letter[Letter::NAME_INDEX])
-      note_name.concat(@quality[Quality::NAME_INDEX]) unless \
-        @quality[Quality::VAL_INDEX].zero?
+      note_name = String.new(letter_name)
+      note_name.concat(quality_name) unless \
+        quality_val.zero?
       note_name.concat(@octave.to_s) unless @octave.nil?
       note_name
     end
@@ -192,7 +280,7 @@ module MusicComposition
     end
 
     ##
-    # Checks if notes are equal by the value of the notes.
+    # Checks if notes are equivalent by the value of the notes.
     #
     # ==== Attributes
     #
@@ -212,6 +300,30 @@ module MusicComposition
     #
     def note_equivalent?(note)
       note.val == @val
+    end
+
+    ##
+    # Returns the name of the quality of the note.
+    #
+    # ==== Examples
+    #
+    #    note = Note.new(letter: 'A', quality: 'NATURAL')
+    #    note.quality_name # => '♮'
+    #
+    def quality_name
+      @quality[Quality::NAME_INDEX]
+    end
+
+    ##
+    # Returns the value of the quality of the note.
+    #
+    # ==== Examples
+    #
+    #    note = Note.new(letter: 'A', quality: 'NATURAL')
+    #    note.quality_val # => 0
+    #
+    def quality_val
+      @quality[Quality::VAL_INDEX]
     end
 
     ##
@@ -241,47 +353,39 @@ module MusicComposition
     #
     def transform_to_equivalent(letter_shift)
       return if letter_shift.zero?
-      letter = (@letter[Letter::ID_INDEX] + letter_shift) % \
+      letter = (letter_id + letter_shift) % \
                Letter::NUMBER_OF_LETTERS
-      Letter.each do |_key, enum|
-        @letter = enum.value if letter == enum.value[Letter::ID_INDEX]
-      end
+      @letter = Letter.find_by_id letter
       set_quality
     end
 
-    def set_vars
+    private def set_vars
       set_val if @val.nil?
       set_quality if @quality.nil?
       set_letter if @letter.nil?
     end
 
-    def set_val
+    private def set_val
       raise ArgumentError if @letter.nil? || @quality.nil?
-      val = @letter[Letter::BASE_VAL_INDEX]
-      val += @quality[Quality::VAL_INDEX]
+      val = letter_val
+      val += quality_val
       val += SEMITONES_PER_OCTAVE if val < 0
       @val = val % SEMITONES_PER_OCTAVE
     end
 
-    def set_quality
+    private def set_quality
       raise ArgumentError if @letter.nil? || @val.nil?
-      quality = @val - @letter[Letter::BASE_VAL_INDEX]
+      quality = @val - letter_val
       quality += SEMITONES_PER_OCTAVE if quality < Quality.min_val
       quality -= SEMITONES_PER_OCTAVE if quality > Quality.max_val
-      Quality.each do |_key, enum|
-        @quality = enum.value if quality == enum.value[Quality::VAL_INDEX]
-      end
+      @quality = Quality.find_by_val quality
     end
 
-    def set_letter
+    private def set_letter
       raise ArgumentError if @quality.nil? || @val.nil?
-      letter = (@val - @quality[Quality::VAL_INDEX]) % SEMITONES_PER_OCTAVE
+      letter = (@val - quality_val) % SEMITONES_PER_OCTAVE
       letter += SEMITONES_PER_OCTAVE if val < 0
-      Letter.each do |_key, enum|
-        @letter = enum.value if letter == enum.value[Letter::BASE_VAL_INDEX]
-      end
+      @letter = Letter.find_by_val letter
     end
-
-    private :set_vars, :set_val, :set_quality, :set_letter
   end
 end
