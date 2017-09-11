@@ -1,5 +1,6 @@
 # encoding: utf-8
 # frozen_string_literal: true
+
 include MusicComposition
 
 # Compares two notes and returns true if equal,

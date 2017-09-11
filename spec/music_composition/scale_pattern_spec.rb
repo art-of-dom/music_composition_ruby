@@ -1,11 +1,12 @@
 # encoding: utf-8
 # frozen_string_literal: true
+
 require 'spec_helper'
 include MusicComposition
 
 describe Scale::Pattern do
   it 'Has correct patterns enums defined as keys' do
-    expect(described_class.keys).to eq [:DIATONIC, :HARMONIC, :MELODIC]
+    expect(described_class.keys).to eq %i[DIATONIC HARMONIC MELODIC]
   end
 
   it 'Has correct patterns enums defined as values' do

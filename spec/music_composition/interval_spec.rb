@@ -1,5 +1,6 @@
 # encoding: utf-8
 # frozen_string_literal: true
+
 require 'spec_helper'
 include MusicComposition
 
@@ -50,23 +51,23 @@ describe Interval do
                                   n2: NOTE_E_NATURAL.dup)
   describe '#interval_equal?' do
     it 'returns true for equal intervals' do
-      expect(interval1.interval_equal?(interval2)).to be_truthy
+      expect(interval1).to be_interval_equal(interval2)
     end
 
     it 'returns false for intervals that are not equal' do
-      expect(interval1.interval_equal?(interval3)).to be_falsey
-      expect(interval1.interval_equal?(interval4)).to be_falsey
+      expect(interval1).not_to be_interval_equal(interval3)
+      expect(interval1).not_to be_interval_equal(interval4)
     end
   end
 
   describe '#interval_equivalent?' do
     it 'returns true for equivalent intervals' do
-      expect(interval1.interval_equivalent?(interval2)).to be_truthy
-      expect(interval1.interval_equivalent?(interval3)).to be_truthy
+      expect(interval1).to be_interval_equivalent(interval2)
+      expect(interval1).to be_interval_equivalent(interval3)
     end
 
     it 'returns false for intervals that are not equivalent' do
-      expect(interval1.interval_equivalent?(interval4)).to be_falsey
+      expect(interval1).not_to be_interval_equivalent(interval4)
     end
   end
 

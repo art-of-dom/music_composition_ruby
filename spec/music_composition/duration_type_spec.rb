@@ -1,11 +1,12 @@
 # encoding: utf-8
 # frozen_string_literal: true
+
 require 'spec_helper'
 include MusicComposition
 
 describe Duration::Type do
   it 'Has correct type enums defined as keys' do
-    expect(described_class.keys).to eq [:REST, :NOTE]
+    expect(described_class.keys).to eq %i[REST NOTE]
   end
 
   it 'Has correct type enums defined as values' do

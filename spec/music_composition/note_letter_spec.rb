@@ -1,5 +1,6 @@
 # encoding: utf-8
 # frozen_string_literal: true
+
 require 'spec_helper'
 include MusicComposition
 
@@ -10,7 +11,7 @@ describe Note::Letter do
   end
 
   it 'Has correct letter enums defined as keys' do
-    expect(described_class.keys).to eq [:A, :B, :C, :D, :E, :F, :G]
+    expect(described_class.keys).to eq %i[A B C D E F G]
   end
 
   it 'Has correct letter enums defined as values' do

@@ -1,5 +1,6 @@
 # encoding: utf-8
 # frozen_string_literal: true
+
 require 'spec_helper'
 require 'music_composition/defines/note_defines'
 require 'music_composition/defines/interval_defines'

@@ -1,11 +1,12 @@
 # encoding: utf-8
 # frozen_string_literal: true
+
 require 'spec_helper'
 include MusicComposition
 
 describe Note::Quality do
   it 'Has correct quality enums defined as keys' do
-    expect(described_class.keys).to eq [:D_FLAT, :FLAT, :NATURAL, :SHARP, :D_SHARP]
+    expect(described_class.keys).to eq %i[D_FLAT FLAT NATURAL SHARP D_SHARP]
   end
 
   it 'Has correct quality enums defined as values' do

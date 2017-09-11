@@ -1,9 +1,10 @@
 # encoding: utf-8
 # frozen_string_literal: true
+
 require 'spec_helper'
 include MusicComposition
 
-QUALITY_ARRAY = %w(D_SHARP SHARP NATURAL FLAT D_FLAT).freeze
+QUALITY_ARRAY = %w[D_SHARP SHARP NATURAL FLAT D_FLAT].freeze
 C_VAL_ARRAY = [2, 1, 0, 11, 10].freeze
 D_VAL_ARRAY = [4, 3, 2, 1, 0].freeze
 E_VAL_ARRAY = [6, 5, 4, 3, 2].freeze
@@ -12,7 +13,7 @@ G_VAL_ARRAY = [9, 8, 7, 6, 5].freeze
 A_VAL_ARRAY = [11, 10, 9, 8, 7].freeze
 B_VAL_ARRAY = [1, 0, 11, 10, 9].freeze
 
-LETTER_ARRAY = %w(A B C D E F G).freeze
+LETTER_ARRAY = %w[A B C D E F G].freeze
 D_SHARP_VALS = [11, 1, 2, 4, 6, 7, 9].freeze
 SHARP_VALS =   [10, 0, 1, 3, 5, 6, 8].freeze
 NATURAL_VALS = [9, 11, 0, 2, 4, 5, 7].freeze

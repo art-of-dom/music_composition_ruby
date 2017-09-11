@@ -1,13 +1,14 @@
 # encoding: utf-8
 # frozen_string_literal: true
+
 require 'spec_helper'
 include MusicComposition
 
 describe Interval::Quality do
   it 'Has correct quality enums defined as keys' do
-    expect(described_class.keys).to eq [:D_DIMINISHED, :DIMINISHED, :MINOR,\
-                                        :MAJOR, :PERFECT, :AUGMENTED,\
-                                        :D_AUGMENTED]
+    expect(described_class.keys).to eq %i[D_DIMINISHED DIMINISHED MINOR
+                                          MAJOR PERFECT AUGMENTED
+                                          D_AUGMENTED]
   end
 
   it 'Has correct quality enums defined as values' do
