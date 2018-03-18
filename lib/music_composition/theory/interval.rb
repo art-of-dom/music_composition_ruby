@@ -1,4 +1,3 @@
-# encoding: utf-8
 # frozen_string_literal: true
 
 ##
@@ -111,9 +110,9 @@ module MusicComposition
     #    interval_cb = Interval.new(n1: n1, n2: n4)
     #    interval_bc = Interval.new(n1: n1, n2: n4, direction: Interval::DOWN)
     #
-    def initialize(n1: nil, n2: nil, direction: UP, compound: false)
-      @note1 = n1
-      @note2 = n2
+    def initialize(note1: nil, note2: nil, direction: UP, compound: false)
+      @note1 = note1
+      @note2 = note2
       raise ArgumentError unless @note1 && @note2
       @direction = direction
       @_compound = compound

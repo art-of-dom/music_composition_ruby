@@ -1,4 +1,3 @@
-# encoding: utf-8
 # frozen_string_literal: true
 
 module MusicComposition
@@ -55,9 +54,7 @@ module MusicComposition
       pattern = nil
       formula_index = Pattern::FORMULA_INDEX
       Pattern.each do |_key, enum|
-        if enum.value[1..enum.value.length].any? { |s| s.casecmp(@name).zero? }
-          pattern = Array.new(enum.value[formula_index])
-        end
+        pattern = Array.new(enum.value[formula_index]) if enum.value[1..enum.value.length].any? { |s| s.casecmp(@name).zero? }
         return pattern, enum.value if pattern
       end
       raise ArgumentError

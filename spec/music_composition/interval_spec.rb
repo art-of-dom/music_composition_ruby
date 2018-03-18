@@ -1,4 +1,3 @@
-# encoding: utf-8
 # frozen_string_literal: true
 
 require 'spec_helper'
@@ -7,13 +6,13 @@ include MusicComposition
 describe Interval do
   it 'Raises ArgumentError if both notes are not present' do
     expect { described_class.new }.to raise_error ArgumentError
-    expect { described_class.new(n1: NOTE_C_NATURAL.dup) }.to raise_error ArgumentError
-    expect { described_class.new(n2: NOTE_C_NATURAL.dup) }.to raise_error ArgumentError
+    expect { described_class.new(note1: NOTE_C_NATURAL.dup) }.to raise_error ArgumentError
+    expect { described_class.new(note2: NOTE_C_NATURAL.dup) }.to raise_error ArgumentError
   end
 
   it 'Raises ArgumentError in ref_comp_notes if direction nil' do
-    interval = described_class.new(n1: NOTE_C_NATURAL.dup,\
-                                   n2: NOTE_C_NATURAL.dup)
+    interval = described_class.new(note1: NOTE_C_NATURAL.dup,\
+                                   note2: NOTE_C_NATURAL.dup)
 
     interval.instance_variable_set(:@direction, nil)
     expect(interval.direction).to eq(nil)
@@ -22,8 +21,8 @@ describe Interval do
   end
 
   it 'Raises ArgumentError in letter_distance_to_val if letter_distance is nil' do
-    interval = described_class.new(n1: NOTE_C_NATURAL.dup,\
-                                   n2: NOTE_C_NATURAL.dup)
+    interval = described_class.new(note1: NOTE_C_NATURAL.dup,\
+                                   note2: NOTE_C_NATURAL.dup)
 
     interval.instance_variable_set(:@letter_distance, nil)
     expect(interval.letter_distance).to eq(nil)
@@ -32,8 +31,8 @@ describe Interval do
   end
 
   it 'Raises ArgumentError in index_lookup if letter_distance is nil' do
-    interval = described_class.new(n1: NOTE_C_NATURAL.dup,\
-                                   n2: NOTE_C_NATURAL.dup)
+    interval = described_class.new(note1: NOTE_C_NATURAL.dup,\
+                                   note2: NOTE_C_NATURAL.dup)
 
     interval.instance_variable_set(:@letter_distance, nil)
     expect(interval.letter_distance).to eq(nil)
@@ -41,14 +40,14 @@ describe Interval do
     expect { interval.send(:index_lookup) }.to raise_error ArgumentError
   end
 
-  interval1 = described_class.new(n1: NOTE_C_NATURAL.dup,\
-                                  n2: NOTE_D_NATURAL.dup)
-  interval2 = described_class.new(n1: NOTE_D_NATURAL.dup,\
-                                  n2: NOTE_E_NATURAL.dup)
-  interval3 = described_class.new(n1: NOTE_C_NATURAL.dup,\
-                                  n2: NOTE_E_D_FLAT.dup)
-  interval4 = described_class.new(n1: NOTE_C_NATURAL.dup,\
-                                  n2: NOTE_E_NATURAL.dup)
+  interval1 = described_class.new(note1: NOTE_C_NATURAL.dup,\
+                                  note2: NOTE_D_NATURAL.dup)
+  interval2 = described_class.new(note1: NOTE_D_NATURAL.dup,\
+                                  note2: NOTE_E_NATURAL.dup)
+  interval3 = described_class.new(note1: NOTE_C_NATURAL.dup,\
+                                  note2: NOTE_E_D_FLAT.dup)
+  interval4 = described_class.new(note1: NOTE_C_NATURAL.dup,\
+                                  note2: NOTE_E_NATURAL.dup)
   describe '#interval_equal?' do
     it 'returns true for equal intervals' do
       expect(interval1).to be_interval_equal(interval2)

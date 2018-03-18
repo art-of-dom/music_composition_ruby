@@ -1,8 +1,11 @@
-# encoding: utf-8
 # frozen_string_literal: true
 
 require 'spec_helper'
 include MusicComposition
+
+PVAL_INDEX = Interval::Quality::BASE_PERFECT_VAL_INDEX
+MVAL_INDEX = Interval::Quality::BASE_MAJOR_VAL_INDEX
+NAME_INDEX = Interval::Quality::NAME_INDEX
 
 describe Interval::Quality do
   it 'Has correct quality enums defined as keys' do
@@ -89,9 +92,7 @@ describe Interval::Quality do
       eq(Interval::Quality::D_AUGMENTED)
   end
 
-  PVAL_INDEX = Interval::Quality::BASE_PERFECT_VAL_INDEX
-  MVAL_INDEX = Interval::Quality::BASE_MAJOR_VAL_INDEX
-  NAME_INDEX = Interval::Quality::NAME_INDEX
+
   it 'Evaluates quality doublely diminished enum correctly' do
     expect(Interval::Quality::D_DIMINISHED[PVAL_INDEX]).to eq(-2)
     expect(Interval::Quality::D_DIMINISHED[MVAL_INDEX]).to eq(-3)

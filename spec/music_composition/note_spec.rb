@@ -1,4 +1,3 @@
-# encoding: utf-8
 # frozen_string_literal: true
 
 require 'spec_helper'
@@ -269,7 +268,7 @@ describe Note do
       end
     end
 
-    it 'returns correct name for natural notes' do
+    it 'returns correct name for natural notes with octave' do
       -5.upto(10) do |i|
         LETTER_ARRAY.each do |letter|
           note = described_class.new(letter: letter, quality: 'NATURAL')

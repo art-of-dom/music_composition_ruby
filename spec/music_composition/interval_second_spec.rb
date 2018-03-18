@@ -1,4 +1,3 @@
-# encoding: utf-8
 # frozen_string_literal: true
 
 require 'spec_helper'
@@ -13,7 +12,7 @@ describe Interval do
              NOTE_C_FLAT.dup]
 
     NATURAL_NOTE_ARRAY.zip(note2).each do |n1, n2|
-      interval = described_class.new(n1: n1, n2: n2)
+      interval = described_class.new(note1: n1, note2: n2)
 
       expect(interval.quality).to eq(Interval::Quality::DIMINISHED)
       expect(interval.letter_distance).to eq(1)
@@ -28,7 +27,7 @@ describe Interval do
              NOTE_A_D_SHARP.dup]
 
     NATURAL_NOTE_ARRAY.zip(note2).each do |n1, n2|
-      interval = described_class.new(n1: n1, n2: n2, direction: Interval::DOWN)
+      interval = described_class.new(note1: n1, note2: n2, direction: Interval::DOWN)
 
       expect(interval.quality).to eq(Interval::Quality::DIMINISHED)
       expect(interval.letter_distance).to eq(1)
@@ -43,7 +42,7 @@ describe Interval do
              NOTE_C_NATURAL.dup]
 
     NATURAL_NOTE_ARRAY.zip(note2).each do |n1, n2|
-      interval = described_class.new(n1: n1, n2: n2)
+      interval = described_class.new(note1: n1, note2: n2)
 
       expect(interval.quality).to eq(Interval::Quality::MINOR)
       expect(interval.letter_distance).to eq(1)
@@ -58,7 +57,7 @@ describe Interval do
              NOTE_A_SHARP.dup]
 
     NATURAL_NOTE_ARRAY.zip(note2).each do |n1, n2|
-      interval = described_class.new(n1: n1, n2: n2, direction: Interval::DOWN)
+      interval = described_class.new(note1: n1, note2: n2, direction: Interval::DOWN)
 
       expect(interval.letter_distance).to eq(1)
       expect(interval.val_distance).to eq(1)
@@ -73,7 +72,7 @@ describe Interval do
              NOTE_C_SHARP.dup]
 
     NATURAL_NOTE_ARRAY.zip(note2).each do |n1, n2|
-      interval = described_class.new(n1: n1, n2: n2)
+      interval = described_class.new(note1: n1, note2: n2)
 
       expect(interval.quality).to eq(Interval::Quality::MAJOR)
       expect(interval.letter_distance).to eq(1)
@@ -88,7 +87,7 @@ describe Interval do
              NOTE_A_NATURAL.dup]
 
     NATURAL_NOTE_ARRAY.zip(note2).each do |n1, n2|
-      interval = described_class.new(n1: n1, n2: n2, direction: Interval::DOWN)
+      interval = described_class.new(note1: n1, note2: n2, direction: Interval::DOWN)
 
       expect(interval.letter_distance).to eq(1)
       expect(interval.val_distance).to eq(2)
@@ -103,7 +102,7 @@ describe Interval do
              NOTE_C_D_SHARP.dup]
 
     NATURAL_NOTE_ARRAY.zip(note2).each do |n1, n2|
-      interval = described_class.new(n1: n1, n2: n2)
+      interval = described_class.new(note1: n1, note2: n2)
 
       expect(interval.quality).to eq(Interval::Quality::AUGMENTED)
       expect(interval.letter_distance).to eq(1)
@@ -118,7 +117,7 @@ describe Interval do
              NOTE_A_FLAT.dup]
 
     NATURAL_NOTE_ARRAY.zip(note2).each do |n1, n2|
-      interval = described_class.new(n1: n1, n2: n2, direction: Interval::DOWN)
+      interval = described_class.new(note1: n1, note2: n2, direction: Interval::DOWN)
 
       expect(interval.quality).to eq(Interval::Quality::AUGMENTED)
       expect(interval.letter_distance).to eq(1)
@@ -136,7 +135,7 @@ describe Interval do
              NOTE_C_D_SHARP.dup]
 
     note1.zip(note2).each do |n1, n2|
-      interval = described_class.new(n1: n1, n2: n2)
+      interval = described_class.new(note1: n1, note2: n2)
 
       expect(interval.quality).to eq(Interval::Quality::D_AUGMENTED)
       expect(interval.letter_distance).to eq(1)
@@ -154,7 +153,7 @@ describe Interval do
              NOTE_A_D_FLAT.dup]
 
     note1.zip(note2).each do |n1, n2|
-      interval = described_class.new(n1: n1, n2: n2, direction: Interval::DOWN)
+      interval = described_class.new(note1: n1, note2: n2, direction: Interval::DOWN)
 
       expect(interval.quality).to eq(Interval::Quality::D_AUGMENTED)
       expect(interval.letter_distance).to eq(1)

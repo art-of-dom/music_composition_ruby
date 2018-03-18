@@ -1,4 +1,3 @@
-# encoding: utf-8
 # frozen_string_literal: true
 
 require 'spec_helper'
@@ -44,7 +43,7 @@ describe Measure do
     expect(measure.excess_durs[0].val).to eq Duration::Value::QUARTER
   end
 
-  it 'Removes extra notes and trims duration on boundry in fixed type if total duration overflows' do
+  it 'Removes extra notes and trims duration on boundry in fixed type if total duration overflows even values' do
     a_note = NOTE_A_NATURAL.dup
     b_note = NOTE_B_NATURAL.dup
     c_note = NOTE_C_NATURAL.dup
@@ -61,7 +60,7 @@ describe Measure do
     expect(measure.excess_durs).to eq [q_note_dur, q_note_dur]
   end
 
-  it 'Removes extra notes and trims duration on boundry in fixed type if total duration overflows' do
+  it 'Removes extra notes and trims duration on boundry in fixed type if total duration overflows uneven values' do
     a_note = NOTE_A_NATURAL.dup
     b_note = NOTE_B_NATURAL.dup
     c_note = NOTE_C_NATURAL.dup

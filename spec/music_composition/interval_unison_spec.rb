@@ -1,4 +1,3 @@
-# encoding: utf-8
 # frozen_string_literal: true
 
 require 'spec_helper'
@@ -7,7 +6,7 @@ include MusicComposition
 describe Interval do
   it 'Calculates Perfect Unison (P1) up correctly' do
     NATURAL_NOTE_ARRAY.zip(NATURAL_NOTE_ARRAY).each do |n1, n2|
-      interval = described_class.new(n1: n1, n2: n2)
+      interval = described_class.new(note1: n1, note2: n2)
 
       expect(interval.quality).to eq(Interval::Quality::PERFECT)
       expect(interval.letter_distance).to eq(0)
@@ -18,7 +17,7 @@ describe Interval do
 
   it 'Calculates Perfect Unison (P1) down correctly' do
     NATURAL_NOTE_ARRAY.zip(NATURAL_NOTE_ARRAY).each do |n1, n2|
-      interval = described_class.new(n1: n1, n2: n2, direction: Interval::DOWN)
+      interval = described_class.new(note1: n1, note2: n2, direction: Interval::DOWN)
 
       expect(interval.quality).to eq(Interval::Quality::PERFECT)
       expect(interval.letter_distance).to eq(0)
@@ -33,7 +32,7 @@ describe Interval do
              NOTE_B_SHARP.dup]
 
     NATURAL_NOTE_ARRAY.zip(note2).each do |n1, n2|
-      interval = described_class.new(n1: n1, n2: n2)
+      interval = described_class.new(note1: n1, note2: n2)
 
       expect(interval.quality).to eq(Interval::Quality::AUGMENTED)
       expect(interval.letter_distance).to eq(0)
@@ -48,7 +47,7 @@ describe Interval do
              NOTE_B_SHARP.dup]
 
     NATURAL_NOTE_ARRAY.zip(note2).each do |n1, n2|
-      interval = described_class.new(n1: n1, n2: n2, direction: Interval::DOWN)
+      interval = described_class.new(note1: n1, note2: n2, direction: Interval::DOWN)
 
       expect(interval.quality).to eq(Interval::Quality::AUGMENTED)
       expect(interval.letter_distance).to eq(0)
@@ -63,7 +62,7 @@ describe Interval do
              NOTE_B_D_SHARP.dup]
 
     NATURAL_NOTE_ARRAY.zip(note2).each do |n1, n2|
-      interval = described_class.new(n1: n1, n2: n2)
+      interval = described_class.new(note1: n1, note2: n2)
 
       expect(interval.quality).to eq(Interval::Quality::D_AUGMENTED)
       expect(interval.letter_distance).to eq(0)
@@ -78,7 +77,7 @@ describe Interval do
              NOTE_B_D_SHARP.dup]
 
     NATURAL_NOTE_ARRAY.zip(note2).each do |n1, n2|
-      interval = described_class.new(n1: n1, n2: n2, direction: Interval::DOWN)
+      interval = described_class.new(note1: n1, note2: n2, direction: Interval::DOWN)
 
       expect(interval.quality).to eq(Interval::Quality::D_AUGMENTED)
       expect(interval.letter_distance).to eq(0)

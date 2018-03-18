@@ -23,7 +23,6 @@ RSpec/DescribedClass:
   Exclude:
     - 'spec/music_composition/version_spec.rb'
 
-
 RSpec/FilePath:
   Exclude:
     - 'spec/music_composition/note_letter_spec.rb'
@@ -39,11 +38,6 @@ Metrics/LineLength:
   Exclude:
     - 'music_composition.gemspec'
 
-
-Style/ConstantName:
-  Exclude:
-    - 'spec/music_composition/defines/pitch_defines.rb'
-
 Style/Copyright:
   Enabled: false
 
@@ -56,7 +50,6 @@ Style/DocumentationMethod:
   Enabled: false
 
 Style/Encoding:
-  EnforcedStyle: always
   Enabled: true
 
 Style/FrozenStringLiteralComment:

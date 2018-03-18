@@ -1,4 +1,3 @@
-# encoding: utf-8
 # frozen_string_literal: true
 
 require 'spec_helper'
@@ -565,7 +564,7 @@ describe Pitch do
       end
     end
 
-    it 'Calculates All Bb note frequencies correctly for equal temperment with ISO defined A440' do
+    it 'Calculates all Bb note frequencies correctly for equal temperment with ISO defined A440' do
       Bb_PITCH_TEST.each do |n, range|
         freq = ET_ISO_Bb0_FREQ
         range.each do |i|
@@ -617,7 +616,7 @@ describe Pitch do
       end
     end
 
-    it 'Calculates All B note frequencies correctly for equal temperment with ISO defined A440' do
+    it 'Calculates all B note frequencies correctly for equal temperment with ISO defined A440' do
       Bb_PITCH_TEST.each do |n, range|
         freq = ET_ISO_Bb0_FREQ
         range.each do |i|
