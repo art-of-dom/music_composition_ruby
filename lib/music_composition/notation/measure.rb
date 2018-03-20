@@ -31,7 +31,7 @@ module MusicComposition
     attr_reader :notes, :durs, :type, :length, :excess_notes, :excess_durs
 
     def initialize(notes: nil, durs: nil, type: Type::FIXED, \
-                   length: (Duration::Value::QUARTER * 4))
+                   length: Duration::Value::WHOLE)
       @notes = null_check_init(notes)
       @durs = null_check_init(durs)
       @type = type
@@ -40,6 +40,61 @@ module MusicComposition
       @excess_notes = []
       @excess_durs = []
       measure_check
+    end
+
+    def insert_note(beat, note, duration)
+      beat_check beat
+      cur_beat = 0
+      i = 0
+      loop do
+        if beat == cur_beat
+          @notes.insert(i, note)
+          @durs.insert(i, duration)
+          empty_measure @durs.map(&:val).reduce(0, :+)
+          break
+        elsif beat < cur_beat
+          @notes.insert(i, note)
+          @durs.insert(i, duration)
+          @durs[i - 1] = Duration.new(raw: @durs[i - 1].val - @durs[i].val)
+          empty_measure @durs.map(&:val).reduce(0, :+)
+          break
+        end
+        cur_beat += @durs[i].val
+        i += 1
+      end
+    end
+
+    def remove_note(beat)
+      beat_check beat
+
+      cur_beat = 0
+      i = 0
+      loop do
+        if beat == cur_beat
+          handle_remove i
+          break
+        elsif beat < cur_beat
+          @notes.insert(i, nil)
+          @durs.insert(i, Duration.new(raw: cur_beat - beat))
+          @durs[i - 1] = Duration.new(raw: @durs[i - 1].val - @durs[i].val)
+          break
+        end
+        cur_beat += @durs[i].val
+        i += 1
+      end
+    end
+
+    def retrograde
+      @notes = @notes.reverse
+      @durs = @durs.reverse
+    end
+
+    private
+  
+    def handle_remove(index)
+      @notes.delete_at(index)
+      @durs.delete_at(index)
+      fill_measure @durs.map(&:val).reduce(0, :+)
     end
 
     def measure_check
@@ -74,6 +129,10 @@ module MusicComposition
     #    def variable_measure_check
     #      #TODO
     #    end
+
+    def beat_check(beat)
+      raise ArgumentError if beat < 0 || beat > @length
+    end
 
     def fill_measure(sum)
       @notes.push(nil)
