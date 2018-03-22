@@ -89,8 +89,11 @@ module MusicComposition
       @durs = @durs.reverse
     end
 
+    def equal?(other)
+      False
+    end
     private
-  
+
     def handle_remove(index)
       @notes.delete_at(index)
       @durs.delete_at(index)

@@ -102,13 +102,13 @@ module MusicComposition
     #    n3 = Note.new(letter: 'G', quality: 'NATURAL')
     #    n4 = Note.new(letter: 'B', quality: 'NATURAL')
     #
-    #    interval_ce = Interval.new(n1: n1, n2: n2)
-    #    interval_ec = Interval.new(n1: n1, n2: n2, direction: Interval::DOWN)
+    #    interval_ce = Interval.new(note1: n1, note2: n2)
+    #    interval_ec = Interval.new(note1: n1, note2: n2, direction: Interval::DOWN)
     #
-    #    interval_cg = Interval.new(n1: n1, n2: n3)
-    #    interval_gc = Interval.new(n1: n1, n2: n3, direction: Interval::DOWN)
-    #    interval_cb = Interval.new(n1: n1, n2: n4)
-    #    interval_bc = Interval.new(n1: n1, n2: n4, direction: Interval::DOWN)
+    #    interval_cg = Interval.new(n1ote: n1, note2: n3)
+    #    interval_gc = Interval.new(note1: n1, note2: n3, direction: Interval::DOWN)
+    #    interval_cb = Interval.new(note1: n1, note2: n4)
+    #    interval_bc = Interval.new(note1: n1, note2: n4, direction: Interval::DOWN)
     #
     def initialize(note1: nil, note2: nil, direction: UP, compound: false)
       @note1 = note1
@@ -133,15 +133,15 @@ module MusicComposition
     #    n3 = Note.new(letter: 'G', quality: 'NATURAL')
     #    n4 = Note.new(letter: 'B', quality: 'NATURAL')
     #
-    #    interval_ce = Interval.new(n1: n1, n2: n2)
-    #    interval_ec = Interval.new(n1: n1, n2: n2, direction: Interval::DOWN)
-    #    interval_ce.interval_equal?(interval_ec) # => false
+    #    interval_ce = Interval.new(note1: n1, note2: n2)
+    #    interval_ec = Interval.new(note1: n1, note2: n2, direction: Interval::DOWN)
+    #    interval_ce.equal?(interval_ec) # => false
     #
-    #    interval_gb = Interval.new(n1: n3, n2: n4)
-    #    interval_gb.interval_equal?(interval_ce) # => ture
-    #    interval_gb.interval_equal?(interval_ec) # => false
+    #    interval_gb = Interval.new(note1: n3, note2: n4)
+    #    interval_gb.equal?(interval_ce) # => ture
+    #    interval_gb.equal?(interval_ec) # => false
     #
-    def interval_equal?(interval)
+    def equal?(interval)
       ((interval.val_distance == @val_distance) && \
        (interval.letter_distance == @letter_distance) && \
        (interval.quality == @quality))
@@ -162,17 +162,17 @@ module MusicComposition
     #    n4 = Note.new(letter: 'B', quality: 'NATURAL')
     #    n5 = Note.new(letter: 'C', quality: 'FLAT')
     #
-    #    interval_ce = Interval.new(n1: n1, n2: n2)
-    #    interval_ec = Interval.new(n1: n1, n2: n2, direction: Interval::DOWN)
-    #    interval_ce.interval_equivalent(interval_ec) # => false
+    #    interval_ce = Interval.new(note1: n1, note2: n2)
+    #    interval_ec = Interval.new(note1: n1, note2: n2, direction: Interval::DOWN)
+    #    interval_ce.equivalent(interval_ec) # => false
     #
-    #    interval_gb = Interval.new(n1: n3, n2: n4)
-    #    interval_gcflat = Interval.new(n1: n3, n2: n5)
-    #    interval_gb.interval_equivalent(interval_ce) # => ture
-    #    interval_gb.interval_equivalent?(interval_ec) # => false
-    #    interval_gb.interval_equivalent?(interval_gcflat) # => ture
+    #    interval_gb = Interval.new(note1: n3, note2: n4)
+    #    interval_gcflat = Interval.new(note1: n3, note2: n5)
+    #    interval_gb.equivalent(interval_ce) # => ture
+    #    interval_gb.equivalent?(interval_ec) # => false
+    #    interval_gb.equivalent?(interval_gcflat) # => ture
     #
-    def interval_equivalent?(interval)
+    def equivalent?(interval)
       interval.val_distance == @val_distance
     end
 

@@ -11,10 +11,10 @@ describe Measure do
   let(:c_note) { NOTE_C_NATURAL.dup }
   let(:d_note) { NOTE_D_NATURAL.dup }
   let(:e_note) { NOTE_E_NATURAL.dup }
-  let(:q_note_dur) { DUR_QUARTER_NOTE.dup }
-  let(:h_note_dur) { DUR_HALF_NOTE.dup }
-  let(:w_note_dur) { DUR_WHOLE_NOTE.dup }
-  
+  let(:q_note_dur) { DUR_QUARTER.dup }
+  let(:h_note_dur) { DUR_HALF.dup }
+  let(:w_note_dur) { DUR_WHOLE.dup }
+
   let(:example_measure) { described_class.new(durs: Array.new(4, q_note_dur), notes: [a_note, b_note, c_note, d_note]) }
 
   it 'Creates a null measure of fixed type defaultly' do

@@ -48,25 +48,25 @@ describe Interval do
                                   note2: NOTE_E_D_FLAT.dup)
   interval4 = described_class.new(note1: NOTE_C_NATURAL.dup,\
                                   note2: NOTE_E_NATURAL.dup)
-  describe '#interval_equal?' do
+  describe '#equal?' do
     it 'returns true for equal intervals' do
-      expect(interval1).to be_interval_equal(interval2)
+      expect(interval1).to be_equal(interval2)
     end
 
     it 'returns false for intervals that are not equal' do
-      expect(interval1).not_to be_interval_equal(interval3)
-      expect(interval1).not_to be_interval_equal(interval4)
+      expect(interval1).not_to be_equal(interval3)
+      expect(interval1).not_to be_equal(interval4)
     end
   end
 
   describe '#interval_equivalent?' do
     it 'returns true for equivalent intervals' do
-      expect(interval1).to be_interval_equivalent(interval2)
-      expect(interval1).to be_interval_equivalent(interval3)
+      expect(interval1).to be_equivalent(interval2)
+      expect(interval1).to be_equivalent(interval3)
     end
 
     it 'returns false for intervals that are not equivalent' do
-      expect(interval1).not_to be_interval_equivalent(interval4)
+      expect(interval1).not_to be_equivalent(interval4)
     end
   end
 

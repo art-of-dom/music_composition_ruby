@@ -8,5 +8,8 @@
 /spec/reports/
 /tmp/
 /vendor/
-*.swp
 /.inch/
+
+*.sw?
+tags
+*.taghl

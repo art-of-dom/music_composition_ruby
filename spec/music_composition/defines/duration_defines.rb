@@ -4,21 +4,13 @@ require 'spec_helper'
 include MusicComposition
 
 # Constant for a quarter note duration to use during testing.
-DUR_QUARTER_NOTE = Duration.new(type: 'note', val: 'QUARTER')
-# Constant for a quarter rest duration to use during testing.
-DUR_QUARTER_REST = Duration.new(type: 'rest', val: 'QUARTER')
+DUR_QUARTER = Duration.new(val: 'QUARTER')
 
 # Constant for a half note duration to use during testing.
-DUR_HALF_NOTE = Duration.new(type: 'note', val: 'HALF')
-# Constant for a half rest duration to use during testing.
-DUR_HALF_REST = Duration.new(type: 'rest', val: 'HALF')
+DUR_HALF = Duration.new(val: 'HALF')
 
 # Constant for a whole note duration to use during testing.
-DUR_WHOLE_NOTE = Duration.new(type: 'note', val: 'WHOLE')
-# Constant for a whole rest duration to use during testing.
-DUR_WHOLE_REST = Duration.new(type: 'rest', val: 'WHOLE')
+DUR_WHOLE = Duration.new(val: 'WHOLE')
 
 # Constant for a double whole note duration to use during testing.
-DUR_DOUBLE_WHOLE_NOTE = Duration.new(type: 'note', val: 'DOUBLE_WHOLE')
-# Constant for a double whole rest duration to use during testing.
-DUR_DOUBLE_WHOLE_REST = Duration.new(type: 'rest', val: 'DOUBLE_WHOLE')
+DUR_DOUBLE_WHOLE = Duration.new(val: 'DOUBLE_WHOLE')

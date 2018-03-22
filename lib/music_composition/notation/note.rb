@@ -257,7 +257,6 @@ module MusicComposition
 
     ##
     # Checks if notes are equal by comparing all attributes.
-    #
     # ==== Attributes
     #
     # * _note_:  The note being compared. Must be a Note object.
@@ -274,7 +273,7 @@ module MusicComposition
     #    note1.note_equal?(note3) # => false
     #    note1.note_equal?(note4) # => false
     #
-    def note_equal?(note)
+    def equal?(note)
       ((note.val == @val) && (note.letter == @letter) && \
        (note.quality == @quality))
     end
@@ -298,7 +297,7 @@ module MusicComposition
     #    note1.note_equivalent?(note3) # => true
     #    note1.note_equivalent?(note4) # => false
     #
-    def note_equivalent?(note)
+    def equivalent?(note)
       note.val == @val
     end
 
@@ -340,24 +339,26 @@ module MusicComposition
     #    note = Note.new(letter: 'A', quality: 'SHARP')
     #
     #    # Turns note into a B♭ note from an A♯ note.
-    #    note.transform_to_equivalent(1)
+    #    note.to_equivalent!(1)
     #
     #    # Turns note into a C𝄫 from a B♭ note.
-    #    note.transform_to_equivalent(1)
+    #    note._to_equivalent!(1)
     #
     #    # Turns note back into an A♯ note from a C𝄫 note.
-    #    note.transform_to_equivalent(-2)
+    #    note.to_equivalent!(-2)
     #
     #    # This has no effect and is still an A♯ note.
-    #    note.transform_to_equivalent(0)
+    #    note.to_equivalent!(0)
     #
-    def transform_to_equivalent(letter_shift)
+    def to_equivalent!(letter_shift)
       return if letter_shift.zero?
       letter = (letter_id + letter_shift) % \
                Letter::NUMBER_OF_LETTERS
       @letter = Letter.find_by_id letter
       set_quality
     end
+
+    alias == equal?
 
     private def set_vars
       set_val if @val.nil?
