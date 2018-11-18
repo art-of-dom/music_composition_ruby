@@ -42,6 +42,7 @@ module MusicComposition
     # of the scale.
     def initialize(root: nil, name: nil)
       raise ArgumentError unless root && name
+
       @name = name
       tmp_pattern, ref_scale = find_pattern_base_pattern
       @pattern = correct_pattern(tmp_pattern, ref_scale)

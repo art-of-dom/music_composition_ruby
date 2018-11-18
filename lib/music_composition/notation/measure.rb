@@ -89,9 +89,10 @@ module MusicComposition
       @durs = @durs.reverse
     end
 
-    def equal?(other)
+    def equal?(_other)
       False
     end
+
     private
 
     def handle_remove(index)

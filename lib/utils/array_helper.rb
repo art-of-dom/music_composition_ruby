@@ -8,6 +8,7 @@ module Utils
     # either empty or contains input
     def null_check_init(input)
       return Array.new(input) if input
+
       []
     end
   end

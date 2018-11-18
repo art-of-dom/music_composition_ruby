@@ -273,9 +273,9 @@ module MusicComposition
     #    note1.note_equal?(note3) # => false
     #    note1.note_equal?(note4) # => false
     #
-    def equal?(note)
-      ((note.val == @val) && (note.letter == @letter) && \
-       (note.quality == @quality))
+    def equal?(other)
+      ((other.val == @val) && (other.letter == @letter) && \
+       (other.quality == @quality))
     end
 
     ##
@@ -352,6 +352,7 @@ module MusicComposition
     #
     def to_equivalent!(letter_shift)
       return if letter_shift.zero?
+
       letter = (letter_id + letter_shift) % \
                Letter::NUMBER_OF_LETTERS
       @letter = Letter.find_by_id letter
@@ -360,30 +361,35 @@ module MusicComposition
 
     alias == equal?
 
-    private def set_vars
+    private
+
+    def set_vars
       set_val if @val.nil?
       set_quality if @quality.nil?
       set_letter if @letter.nil?
     end
 
-    private def set_val
+    def set_val
       raise ArgumentError if @letter.nil? || @quality.nil?
+
       val = letter_val
       val += quality_val
       val += SEMITONES_PER_OCTAVE if val < 0
       @val = val % SEMITONES_PER_OCTAVE
     end
 
-    private def set_quality
+    def set_quality
       raise ArgumentError if @letter.nil? || @val.nil?
+
       quality = @val - letter_val
       quality += SEMITONES_PER_OCTAVE if quality < Quality.min_val
       quality -= SEMITONES_PER_OCTAVE if quality > Quality.max_val
       @quality = Quality.find_by_val quality
     end
 
-    private def set_letter
+    def set_letter
       raise ArgumentError if @quality.nil? || @val.nil?
+
       letter = (@val - quality_val) % SEMITONES_PER_OCTAVE
       letter += SEMITONES_PER_OCTAVE if val < 0
       @letter = Letter.find_by_val letter

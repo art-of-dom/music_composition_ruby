@@ -114,6 +114,7 @@ module MusicComposition
       @note1 = note1
       @note2 = note2
       raise ArgumentError unless @note1 && @note2
+
       @direction = direction
       @_compound = compound
       calculate_interval
@@ -124,7 +125,7 @@ module MusicComposition
     #
     # ==== Attributes
     #
-    # * _interval_:  The interval being compared. Must be a Interval object.
+    # * _other_:  The interval being compared. Must be a Interval object.
     #
     # ==== Examples
     #
@@ -141,10 +142,10 @@ module MusicComposition
     #    interval_gb.equal?(interval_ce) # => ture
     #    interval_gb.equal?(interval_ec) # => false
     #
-    def equal?(interval)
-      ((interval.val_distance == @val_distance) && \
-       (interval.letter_distance == @letter_distance) && \
-       (interval.quality == @quality))
+    def equal?(other)
+      ((other.val_distance == @val_distance) && \
+       (other.letter_distance == @letter_distance) && \
+       (other.quality == @quality))
     end
 
     ##
@@ -152,7 +153,7 @@ module MusicComposition
     #
     # ==== Attributes
     #
-    # * _interval_:  The interval being compared. Must be a Interval object.
+    # * _other_:  The interval being compared. Must be a Interval object.
     #
     # ==== Examples
     #
@@ -172,8 +173,8 @@ module MusicComposition
     #    interval_gb.equivalent?(interval_ec) # => false
     #    interval_gb.equivalent?(interval_gcflat) # => ture
     #
-    def equivalent?(interval)
-      interval.val_distance == @val_distance
+    def equivalent?(other)
+      other.val_distance == @val_distance
     end
 
     ##
@@ -211,9 +212,11 @@ module MusicComposition
       interval_name.concat(letter_distance.next.to_s)
     end
 
+    private
+
     ##
     #  Runs all calculations needed to determine the interval.
-    private def calculate_interval
+    def calculate_interval
       ref, comp = ref_comp_notes
       set_distance ref, comp
       set_quality
@@ -225,7 +228,7 @@ module MusicComposition
 
     ##
     # Looks up which index to use for quality of the interval.
-    private def index_lookup
+    def index_lookup
       case @letter_distance # % 7
       when 0, 3, 4
         return Quality::BASE_PERFECT_VAL_INDEX
@@ -239,7 +242,7 @@ module MusicComposition
     #  Gets the "natural" value of the distance between two notes.
     #  For major/minor chords the "natural" value is the major interval
     #  and for perfect intervals the value is the perfect interval.
-    private def letter_distance_to_val
+    def letter_distance_to_val
       case @letter_distance # % 7
       when 0..2
         @letter_distance * 2
@@ -251,7 +254,7 @@ module MusicComposition
     end
 
     # Sets notes for refernce and comparison based on direction.
-    private def ref_comp_notes
+    def ref_comp_notes
       case @direction
       when UP
         [@note1, @note2]
@@ -263,7 +266,7 @@ module MusicComposition
     end
 
     # internally sets distance of the interval
-    private def set_distance(ref, comp)
+    def set_distance(ref, comp)
       oct_comp = 1
       oct_ref = 1
       oct_comp ||= comp.octave
@@ -275,7 +278,7 @@ module MusicComposition
     end
 
     # internally sets quality of the interval
-    private def set_quality
+    def set_quality
       quality = @val_distance - letter_distance_to_val
       quality -= Note::SEMITONES_PER_OCTAVE if quality > 5
       quality += Note::SEMITONES_PER_OCTAVE if quality < -5
@@ -285,7 +288,7 @@ module MusicComposition
 
     # Unison is an oddball. It can't be diminished, so it must be accounted for
     # here
-    private def unison_correcter
+    def unison_correcter
       if @val_distance > 5
         @val_distance -= Note::SEMITONES_PER_OCTAVE
       elsif @val_distance < -5
