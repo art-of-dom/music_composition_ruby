@@ -23,12 +23,15 @@ describe Note do
   it 'Raises argument error if no arguments are given' do
     expect { described_class.new }.to raise_error ArgumentError
   end
+
   it 'Raises argument error letter given and no other arguments given' do
     expect { described_class.new(letter: 'A') }.to raise_error ArgumentError
   end
+
   it 'Raises argument error quality given and no other arguments given' do
     expect { described_class.new(quality: 'SHARP') }.to raise_error ArgumentError
   end
+
   it 'Raises argument error val given and no other arguments given' do
     expect { described_class.new(val: 0) }.to raise_error ArgumentError
   end

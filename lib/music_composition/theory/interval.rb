@@ -222,7 +222,7 @@ module MusicComposition
       set_quality
 
       @octave = comp.octave - ref.octave if !comp.octave.nil? && !ref.octave.nil?
-      @letter_distance += 7 if !@octave.nil? && @octave > 0 && \
+      @letter_distance += 7 if !@octave.nil? && @octave.positive? && \
                                (@_compound || @letter_distance.zero?)
     end
 
@@ -231,9 +231,9 @@ module MusicComposition
     def index_lookup
       case @letter_distance # % 7
       when 0, 3, 4
-        return Quality::BASE_PERFECT_VAL_INDEX
+        Quality::BASE_PERFECT_VAL_INDEX
       when 1, 2, 5, 6
-        return Quality::BASE_MAJOR_VAL_INDEX
+        Quality::BASE_MAJOR_VAL_INDEX
       else
         raise ArgumentError
       end

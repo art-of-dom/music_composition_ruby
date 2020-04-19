@@ -116,10 +116,10 @@ module MusicComposition
 
     def fixed_measure_check
       sum = @durs.map(&:val).reduce(0, :+)
-      if sum - @length < 0
+      if (sum - @length).negative?
         fill_measure sum
-      elsif sum - @length > 0
-        while sum - @length > 0
+      elsif (sum - @length).positive?
+        while (sum - @length).positive?
           empty_measure sum
           sum = @durs.map(&:val).reduce(0, :+)
         end
@@ -135,7 +135,7 @@ module MusicComposition
     #    end
 
     def beat_check(beat)
-      raise ArgumentError if beat < 0 || beat > @length
+      raise ArgumentError if beat.negative? || beat > @length
     end
 
     def fill_measure(sum)
@@ -145,7 +145,7 @@ module MusicComposition
 
     def empty_measure(sum)
       # If the last duration is causing the overflow, shorten it
-      if sum - @length - @durs[-1].val < 0
+      if (sum - @length - @durs[-1].val).negative?
         cut_excess sum
       else
         @excess_notes.unshift(@notes.pop)

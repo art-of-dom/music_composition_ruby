@@ -14,6 +14,7 @@ describe Voice do
       expect(voice.measure[0].excess_notes).to eq [nil]
       expect(voice.measure[0].excess_durs).to eq [DUR_QUARTER.dup]
     end
+
     it 'adds note to end of the first measure' do
       mes = [Measure.new, Measure.new, Measure.new]
       voice = described_class.new(mes)

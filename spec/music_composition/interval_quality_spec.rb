@@ -33,6 +33,7 @@ describe Interval::Quality do
     expect(described_class.parse('D_Diminished')).to\
       eq(Interval::Quality::D_DIMINISHED)
   end
+
   it 'Parses quality diminished correctly' do
     expect(described_class.parse('DIMINISHED')).to\
       eq(Interval::Quality::DIMINISHED)
@@ -45,6 +46,7 @@ describe Interval::Quality do
     expect(described_class.parse('DiMiNiShEd')).to\
       eq(Interval::Quality::DIMINISHED)
   end
+
   it 'Parses quality minor correctly' do
     expect(described_class.parse('MINOR')).to eq(Interval::Quality::MINOR)
     expect(described_class.parse('minor')).to eq(Interval::Quality::MINOR)
@@ -52,6 +54,7 @@ describe Interval::Quality do
     expect(described_class.parse('mINOR')).to eq(Interval::Quality::MINOR)
     expect(described_class.parse('MiNoR')).to eq(Interval::Quality::MINOR)
   end
+
   it 'Parses quality major correctly' do
     expect(described_class.parse('MAJOR')).to eq(Interval::Quality::MAJOR)
     expect(described_class.parse('major')).to eq(Interval::Quality::MAJOR)
@@ -59,6 +62,7 @@ describe Interval::Quality do
     expect(described_class.parse('mAJOR')).to eq(Interval::Quality::MAJOR)
     expect(described_class.parse('MaJoR')).to eq(Interval::Quality::MAJOR)
   end
+
   it 'Parses quality perfect correctly' do
     expect(described_class.parse('PERFECT')).to eq(Interval::Quality::PERFECT)
     expect(described_class.parse('perfect')).to eq(Interval::Quality::PERFECT)
@@ -66,6 +70,7 @@ describe Interval::Quality do
     expect(described_class.parse('pERFECT')).to eq(Interval::Quality::PERFECT)
     expect(described_class.parse('PeRfEcT')).to eq(Interval::Quality::PERFECT)
   end
+
   it 'Parses quality augmented correctly' do
     expect(described_class.parse('AUGMENTED')).to\
       eq(Interval::Quality::AUGMENTED)

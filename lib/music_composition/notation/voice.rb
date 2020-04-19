@@ -1,7 +1,11 @@
 # frozen_string_literal: true
 
+##
+# Contains the structure for a single melodic line also known as a voice
 module MusicComposition
   attr_reader :measure, :end_meausre, :end_beat
+  ##
+  # Contains the structure for a single melodic line also known as a voice
   class Voice
     def initialize(measures)
       @measure = measures

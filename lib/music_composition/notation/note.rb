@@ -374,7 +374,7 @@ module MusicComposition
 
       val = letter_val
       val += quality_val
-      val += SEMITONES_PER_OCTAVE if val < 0
+      val += SEMITONES_PER_OCTAVE if val.negative?
       @val = val % SEMITONES_PER_OCTAVE
     end
 
@@ -391,7 +391,7 @@ module MusicComposition
       raise ArgumentError if @quality.nil? || @val.nil?
 
       letter = (@val - quality_val) % SEMITONES_PER_OCTAVE
-      letter += SEMITONES_PER_OCTAVE if val < 0
+      letter += SEMITONES_PER_OCTAVE if val.negative?
       @letter = Letter.find_by_val letter
     end
   end
