@@ -97,7 +97,6 @@ describe Interval::Quality do
       eq(Interval::Quality::D_AUGMENTED)
   end
 
-
   it 'Evaluates quality doublely diminished enum correctly' do
     expect(Interval::Quality::D_DIMINISHED[PVAL_INDEX]).to eq(-2)
     expect(Interval::Quality::D_DIMINISHED[MVAL_INDEX]).to eq(-3)

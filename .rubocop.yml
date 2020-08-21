@@ -13,8 +13,12 @@ Layout/LineLength:
   Exclude:
     - 'music_composition.gemspec'
 
+Layout/EmptyLinesAroundAttributeAccessor:
+  Enabled: true
+
 Layout/SpaceAroundMethodCallOperator:
   Enabled: true
+
 
 Lint/StructNewOverride:
   Enabled: true
