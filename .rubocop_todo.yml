@@ -42,7 +42,7 @@ Naming/ConstantName:
 # Offense count: 20
 # Configuration parameters: CountAsOne.
 RSpec/ExampleLength:
-  Max: 27
+  Max: 28
 
 # Offense count: 3
 # Configuration parameters: AllowSubject.
