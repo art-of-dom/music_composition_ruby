@@ -15,6 +15,7 @@ module MusicComposition
       define :REST, 0
       define :NOTE, 1
     end
+
     ##
     # The representation of the length in typical music notation.
     class Value
@@ -22,16 +23,16 @@ module MusicComposition
 
       # Base duration value for determining the length of the duration
       BASE_VAL = 6
-      define :TWO_HUNDRED_FIFTY_SIXTH, 2**0 * BASE_VAL
-      define :ONE_HUNDRED_TWENTY_EIGHTH, 2**1 * BASE_VAL
-      define :SIXTY_FOURTH, 2**2 * BASE_VAL
-      define :THIRTY_SECOND, 2**3 * BASE_VAL
-      define :SIXTEENTH, 2**4 * BASE_VAL
-      define :EIGHTH, 2**5 * BASE_VAL
-      define :QUARTER, 2**6 * BASE_VAL
-      define :HALF, 2**7 * BASE_VAL
-      define :WHOLE, 2**8 * BASE_VAL
-      define :DOUBLE_WHOLE, 2**9 * BASE_VAL
+      define :TWO_HUNDRED_FIFTY_SIXTH, (2**0) * BASE_VAL
+      define :ONE_HUNDRED_TWENTY_EIGHTH, (2**1) * BASE_VAL
+      define :SIXTY_FOURTH, (2**2) * BASE_VAL
+      define :THIRTY_SECOND, (2**3) * BASE_VAL
+      define :SIXTEENTH, (2**4) * BASE_VAL
+      define :EIGHTH, (2**5) * BASE_VAL
+      define :QUARTER, (2**6) * BASE_VAL
+      define :HALF, (2**7) * BASE_VAL
+      define :WHOLE, (2**8) * BASE_VAL
+      define :DOUBLE_WHOLE, (2**9) * BASE_VAL
     end
 
     ##

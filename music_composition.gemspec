@@ -21,7 +21,7 @@ Gem::Specification.new do |spec|
   # else
   #  raise "RubyGems 2.0 or newer is required to protect against public gem pushes."
   # end
-  spec.required_ruby_version = '>= 2.4.0'
+  spec.required_ruby_version = '>= 2.5.0'
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
   spec.bindir        = 'exe'
@@ -38,5 +38,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rubocop-rspec'
   spec.add_development_dependency 'simplecov', '~> 0.12'
 
-  spec.add_dependency 'ruby-enum', '~> 0.5'
+  spec.add_dependency 'ruby-enum', '~> 0.9'
 end
