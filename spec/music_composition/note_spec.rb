@@ -102,7 +102,7 @@ describe Note do
   it 'Raises argument error in set_val if letter not vaild' do
     n = described_class.new(letter: 'B', quality: 'D_FLAT')
     n.instance_variable_set(:@letter, nil)
-    expect(n.letter).to eq(nil)
+    expect(n.letter).to be_nil
 
     expect { n.send(:set_val, []) }.to raise_error ArgumentError
   end
@@ -334,8 +334,8 @@ describe Note do
     it 'returns false for notes that are not equal' do
       n1 = described_class.new(letter: 'A', quality: 'SHARP')
       n2 = described_class.new(val: 10, quality: 'FLAT')
-      expect(n1 == n2).to eq(false)
-      expect(n2 == n1).to eq(false)
+      expect(n1 == n2).to be(false)
+      expect(n2 == n1).to be(false)
     end
   end
 

@@ -110,20 +110,20 @@ describe Interval::Quality do
   end
 
   it 'Evaluates quality minor enum correctly' do
-    expect(Interval::Quality::MINOR[PVAL_INDEX]).to eq(nil)
+    expect(Interval::Quality::MINOR[PVAL_INDEX]).to be_nil
     expect(Interval::Quality::MINOR[MVAL_INDEX]).to eq(-1)
     expect(Interval::Quality::MINOR[NAME_INDEX]).to eq('m')
   end
 
   it 'Evaluates quality major enum correctly' do
-    expect(Interval::Quality::MAJOR[PVAL_INDEX]).to eq(nil)
+    expect(Interval::Quality::MAJOR[PVAL_INDEX]).to be_nil
     expect(Interval::Quality::MAJOR[MVAL_INDEX]).to eq(0)
     expect(Interval::Quality::MAJOR[NAME_INDEX]).to eq('M')
   end
 
   it 'Evaluates quality perfect enum correctly' do
     expect(Interval::Quality::PERFECT[PVAL_INDEX]).to eq(0)
-    expect(Interval::Quality::PERFECT[MVAL_INDEX]).to eq(nil)
+    expect(Interval::Quality::PERFECT[MVAL_INDEX]).to be_nil
     expect(Interval::Quality::PERFECT[NAME_INDEX]).to eq('P')
   end
 

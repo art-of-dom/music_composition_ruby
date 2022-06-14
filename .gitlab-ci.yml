@@ -1,3 +1,7 @@
+image: ruby:3.0
+
+
+
 before_script:
   - ruby -v
   - which ruby

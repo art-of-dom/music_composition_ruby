@@ -15,7 +15,7 @@ describe Interval do
                                    note2: NOTE_C_NATURAL.dup)
 
     interval.instance_variable_set(:@direction, nil)
-    expect(interval.direction).to eq(nil)
+    expect(interval.direction).to be_nil
 
     expect { interval.send(:ref_comp_notes) }.to raise_error ArgumentError
   end
@@ -25,7 +25,7 @@ describe Interval do
                                    note2: NOTE_C_NATURAL.dup)
 
     interval.instance_variable_set(:@letter_distance, nil)
-    expect(interval.letter_distance).to eq(nil)
+    expect(interval.letter_distance).to be_nil
 
     expect { interval.send(:letter_distance_to_val) }.to raise_error ArgumentError
   end
@@ -35,7 +35,7 @@ describe Interval do
                                    note2: NOTE_C_NATURAL.dup)
 
     interval.instance_variable_set(:@letter_distance, nil)
-    expect(interval.letter_distance).to eq(nil)
+    expect(interval.letter_distance).to be_nil
 
     expect { interval.send(:index_lookup) }.to raise_error ArgumentError
   end
