@@ -27,8 +27,8 @@ describe Interval do
   end
 
   it 'Calculates Augmented Unison (A1) up correctly' do
-    note2 = [NOTE_C_SHARP.dup, NOTE_D_SHARP.dup, NOTE_E_SHARP.dup,\
-             NOTE_F_SHARP.dup, NOTE_G_SHARP.dup, NOTE_A_SHARP.dup,\
+    note2 = [NOTE_C_SHARP.dup, NOTE_D_SHARP.dup, NOTE_E_SHARP.dup, \
+             NOTE_F_SHARP.dup, NOTE_G_SHARP.dup, NOTE_A_SHARP.dup, \
              NOTE_B_SHARP.dup]
 
     NATURAL_NOTE_ARRAY.zip(note2).each do |n1, n2|
@@ -42,8 +42,8 @@ describe Interval do
   end
 
   it 'Calculates Augmented Unison (A1) down correctly' do
-    note2 = [NOTE_C_SHARP.dup, NOTE_D_SHARP.dup, NOTE_E_SHARP.dup,\
-             NOTE_F_SHARP.dup, NOTE_G_SHARP.dup, NOTE_A_SHARP.dup,\
+    note2 = [NOTE_C_SHARP.dup, NOTE_D_SHARP.dup, NOTE_E_SHARP.dup, \
+             NOTE_F_SHARP.dup, NOTE_G_SHARP.dup, NOTE_A_SHARP.dup, \
              NOTE_B_SHARP.dup]
 
     NATURAL_NOTE_ARRAY.zip(note2).each do |n1, n2|
@@ -57,8 +57,8 @@ describe Interval do
   end
 
   it 'Calculates doublely Augmented Unison (AA1) up correctly' do
-    note2 = [NOTE_C_D_SHARP.dup, NOTE_D_D_SHARP.dup, NOTE_E_D_SHARP.dup,\
-             NOTE_F_D_SHARP.dup, NOTE_G_D_SHARP.dup, NOTE_A_D_SHARP.dup,\
+    note2 = [NOTE_C_D_SHARP.dup, NOTE_D_D_SHARP.dup, NOTE_E_D_SHARP.dup, \
+             NOTE_F_D_SHARP.dup, NOTE_G_D_SHARP.dup, NOTE_A_D_SHARP.dup, \
              NOTE_B_D_SHARP.dup]
 
     NATURAL_NOTE_ARRAY.zip(note2).each do |n1, n2|
@@ -72,8 +72,8 @@ describe Interval do
   end
 
   it 'Calculates doublely Augmented Unison (AA1) down correctly' do
-    note2 = [NOTE_C_D_SHARP.dup, NOTE_D_D_SHARP.dup, NOTE_E_D_SHARP.dup,\
-             NOTE_F_D_SHARP.dup, NOTE_G_D_SHARP.dup, NOTE_A_D_SHARP.dup,\
+    note2 = [NOTE_C_D_SHARP.dup, NOTE_D_D_SHARP.dup, NOTE_E_D_SHARP.dup, \
+             NOTE_F_D_SHARP.dup, NOTE_G_D_SHARP.dup, NOTE_A_D_SHARP.dup, \
              NOTE_B_D_SHARP.dup]
 
     NATURAL_NOTE_ARRAY.zip(note2).each do |n1, n2|

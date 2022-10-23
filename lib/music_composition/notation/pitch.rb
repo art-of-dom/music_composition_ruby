@@ -64,8 +64,8 @@ module MusicComposition
     #    note.frequency    # => 880.0
     #    note.calc_frequency(ref_pitch: BAROQUE_REFERENCE_PITCH)
     #    note.frequency    # => 830.0
-    def calc_frequency(ref_pitch: ISO_REFERENCE_PITCH,\
-                       ref_val: Note::Letter::A[Note::Letter::BASE_VAL_INDEX],\
+    def calc_frequency(ref_pitch: ISO_REFERENCE_PITCH, \
+                       ref_val: Note::Letter::A[Note::Letter::BASE_VAL_INDEX], \
                        ref_octave: MIDDLE_OCTAVE)
       tmp_octave = (@octave * Note::SEMITONES_PER_OCTAVE)
       tmp_octave +=  @letter[Note::Letter::BASE_VAL_INDEX]

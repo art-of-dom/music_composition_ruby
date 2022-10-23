@@ -5,28 +5,28 @@ require 'music_composition/defines/pitch_defines'
 require 'music_composition/defines/note_defines'
 include MusicComposition
 
-C_PITCH_TEST = [[NOTE_B_SHARP.dup, (-1..9)], [NOTE_C_NATURAL.dup, (0..10)],\
+C_PITCH_TEST = [[NOTE_B_SHARP.dup, (-1..9)], [NOTE_C_NATURAL.dup, (0..10)], \
                 [NOTE_D_D_FLAT, (0..10)]].freeze
-Db_PITCH_TEST = [[NOTE_B_D_SHARP.dup, (-1..9)], [NOTE_C_SHARP.dup, (0..10)],\
+Db_PITCH_TEST = [[NOTE_B_D_SHARP.dup, (-1..9)], [NOTE_C_SHARP.dup, (0..10)], \
                  [NOTE_D_FLAT, (0..10)]].freeze
-D_PITCH_TEST = [[NOTE_C_D_SHARP.dup, (0..10)], [NOTE_D_NATURAL.dup, (0..10)],\
+D_PITCH_TEST = [[NOTE_C_D_SHARP.dup, (0..10)], [NOTE_D_NATURAL.dup, (0..10)], \
                 [NOTE_E_D_FLAT, (0..10)]].freeze
-Eb_PITCH_TEST = [[NOTE_D_SHARP.dup, (0..10)], [NOTE_E_FLAT.dup, (0..10)],\
+Eb_PITCH_TEST = [[NOTE_D_SHARP.dup, (0..10)], [NOTE_E_FLAT.dup, (0..10)], \
                  [NOTE_F_D_FLAT, (0..10)]].freeze
-E_PITCH_TEST = [[NOTE_D_D_SHARP.dup, (0..10)], [NOTE_E_NATURAL.dup, (0..10)],\
+E_PITCH_TEST = [[NOTE_D_D_SHARP.dup, (0..10)], [NOTE_E_NATURAL.dup, (0..10)], \
                 [NOTE_F_FLAT, (0..10)]].freeze
-F_PITCH_TEST = [[NOTE_E_SHARP.dup, (0..10)], [NOTE_F_NATURAL.dup, (0..10)],\
+F_PITCH_TEST = [[NOTE_E_SHARP.dup, (0..10)], [NOTE_F_NATURAL.dup, (0..10)], \
                 [NOTE_G_D_FLAT, (0..10)]].freeze
-Gb_PITCH_TEST = [[NOTE_E_D_SHARP.dup, (0..10)], [NOTE_F_SHARP.dup, (0..10)],\
+Gb_PITCH_TEST = [[NOTE_E_D_SHARP.dup, (0..10)], [NOTE_F_SHARP.dup, (0..10)], \
                  [NOTE_G_FLAT, (0..10)]].freeze
-G_PITCH_TEST = [[NOTE_F_D_SHARP.dup, (0..10)], [NOTE_G_NATURAL.dup, (0..10)],\
+G_PITCH_TEST = [[NOTE_F_D_SHARP.dup, (0..10)], [NOTE_G_NATURAL.dup, (0..10)], \
                 [NOTE_A_D_FLAT, (0..10)]].freeze
 Ab_PITCH_TEST = [[NOTE_G_SHARP.dup, (0..10)], [NOTE_A_FLAT, (0..10)]].freeze
-A_PITCH_TEST = [[NOTE_G_D_SHARP.dup, (0..10)], [NOTE_A_NATURAL.dup, (0..10)],\
+A_PITCH_TEST = [[NOTE_G_D_SHARP.dup, (0..10)], [NOTE_A_NATURAL.dup, (0..10)], \
                 [NOTE_B_D_FLAT, (0..10)]].freeze
-Bb_PITCH_TEST = [[NOTE_A_SHARP.dup, (0..10)], [NOTE_B_FLAT.dup, (0..10)],\
+Bb_PITCH_TEST = [[NOTE_A_SHARP.dup, (0..10)], [NOTE_B_FLAT.dup, (0..10)], \
                  [NOTE_C_D_FLAT, (1..11)]].freeze
-B_PITCH_TEST = [[NOTE_A_D_SHARP.dup, (0..10)], [NOTE_B_NATURAL.dup, (0..10)],\
+B_PITCH_TEST = [[NOTE_A_D_SHARP.dup, (0..10)], [NOTE_B_NATURAL.dup, (0..10)], \
                 [NOTE_C_FLAT, (1..11)]].freeze
 
 describe Pitch do

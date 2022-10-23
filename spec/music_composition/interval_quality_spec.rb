@@ -15,35 +15,35 @@ describe Interval::Quality do
   end
 
   it 'Has correct quality enums defined as values' do
-    expect(described_class.values).to eq [[-2, -3, 'dd'], [-1, -2, 'd'],\
-                                          [nil, -1, 'm'], [nil, 0, 'M'],\
-                                          [0, nil, 'P'], [1, 1, 'A'],\
+    expect(described_class.values).to eq [[-2, -3, 'dd'], [-1, -2, 'd'], \
+                                          [nil, -1, 'm'], [nil, 0, 'M'], \
+                                          [0, nil, 'P'], [1, 1, 'A'], \
                                           [2, 2, 'AA']]
   end
 
   it 'Parses quality doublely diminished correctly' do
-    expect(described_class.parse('D_DIMINISHED')).to\
+    expect(described_class.parse('D_DIMINISHED')).to \
       eq(Interval::Quality::D_DIMINISHED)
-    expect(described_class.parse('d_diminished')).to\
+    expect(described_class.parse('d_diminished')).to \
       eq(Interval::Quality::D_DIMINISHED)
-    expect(described_class.parse('D_diminished')).to\
+    expect(described_class.parse('D_diminished')).to \
       eq(Interval::Quality::D_DIMINISHED)
-    expect(described_class.parse('d_DIMINISHED')).to\
+    expect(described_class.parse('d_DIMINISHED')).to \
       eq(Interval::Quality::D_DIMINISHED)
-    expect(described_class.parse('D_Diminished')).to\
+    expect(described_class.parse('D_Diminished')).to \
       eq(Interval::Quality::D_DIMINISHED)
   end
 
   it 'Parses quality diminished correctly' do
-    expect(described_class.parse('DIMINISHED')).to\
+    expect(described_class.parse('DIMINISHED')).to \
       eq(Interval::Quality::DIMINISHED)
-    expect(described_class.parse('diminished')).to\
+    expect(described_class.parse('diminished')).to \
       eq(Interval::Quality::DIMINISHED)
-    expect(described_class.parse('Diminished')).to\
+    expect(described_class.parse('Diminished')).to \
       eq(Interval::Quality::DIMINISHED)
-    expect(described_class.parse('dIMINISHED')).to\
+    expect(described_class.parse('dIMINISHED')).to \
       eq(Interval::Quality::DIMINISHED)
-    expect(described_class.parse('DiMiNiShEd')).to\
+    expect(described_class.parse('DiMiNiShEd')).to \
       eq(Interval::Quality::DIMINISHED)
   end
 
@@ -72,28 +72,28 @@ describe Interval::Quality do
   end
 
   it 'Parses quality augmented correctly' do
-    expect(described_class.parse('AUGMENTED')).to\
+    expect(described_class.parse('AUGMENTED')).to \
       eq(Interval::Quality::AUGMENTED)
-    expect(described_class.parse('augmented')).to\
+    expect(described_class.parse('augmented')).to \
       eq(Interval::Quality::AUGMENTED)
-    expect(described_class.parse('Augmented')).to\
+    expect(described_class.parse('Augmented')).to \
       eq(Interval::Quality::AUGMENTED)
-    expect(described_class.parse('aUGMENTED')).to\
+    expect(described_class.parse('aUGMENTED')).to \
       eq(Interval::Quality::AUGMENTED)
-    expect(described_class.parse('AuGmEnTeD')).to\
+    expect(described_class.parse('AuGmEnTeD')).to \
       eq(Interval::Quality::AUGMENTED)
   end
 
   it 'Parses quality doublely augmented correctly' do
-    expect(described_class.parse('D_AUGMENTED')).to\
+    expect(described_class.parse('D_AUGMENTED')).to \
       eq(Interval::Quality::D_AUGMENTED)
-    expect(described_class.parse('d_augmented')).to\
+    expect(described_class.parse('d_augmented')).to \
       eq(Interval::Quality::D_AUGMENTED)
-    expect(described_class.parse('D_augmented')).to\
+    expect(described_class.parse('D_augmented')).to \
       eq(Interval::Quality::D_AUGMENTED)
-    expect(described_class.parse('d_AUGMENTED')).to\
+    expect(described_class.parse('d_AUGMENTED')).to \
       eq(Interval::Quality::D_AUGMENTED)
-    expect(described_class.parse('D_Augmented')).to\
+    expect(described_class.parse('D_Augmented')).to \
       eq(Interval::Quality::D_AUGMENTED)
   end
 

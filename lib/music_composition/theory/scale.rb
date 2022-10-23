@@ -29,8 +29,8 @@ module MusicComposition
       define :HARMONIC, [[W, H, W, W, H, A, H], 'Harmonic Minor', \
                          'Locrian #6', 'Ionian #5', 'Dorian #4', \
                          'Phrygian Dominant', 'Lydian #2', 'Super Locrian b7']
-      define :MELODIC, [[W, H, W, W, W, W, H], 'Melodic Minor',\
-                        'Dorian b2', 'Lydian #5', 'Lydian Dominant',\
+      define :MELODIC, [[W, H, W, W, W, W, H], 'Melodic Minor', \
+                        'Dorian b2', 'Lydian #5', 'Lydian Dominant', \
                         'Mixolydin b6', 'Half Diminished', 'Super Locrian']
       # The index of the scale pattern formula
       FORMULA_INDEX = 0
