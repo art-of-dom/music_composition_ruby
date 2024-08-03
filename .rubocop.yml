@@ -1,4 +1,6 @@
-require: rubocop-rspec
+require:
+  - rubocop-rake
+  - rubocop-rspec
 
 inherit_from: .rubocop_todo.yml
 
@@ -7,7 +9,7 @@ AllCops:
     - 'vendor/**/*'
     - 'spec/fixtures/**/*'
     - 'tmp/**/*'
-  TargetRubyVersion: 2.5
+  TargetRubyVersion: 2.7
   NewCops: enable
 
 
@@ -72,16 +74,6 @@ RSpec/MultipleExpectations:
 RSpec/DescribedClass:
   Exclude:
     - 'spec/music_composition/version_spec.rb'
-
-RSpec/FilePath:
-  Exclude:
-    - 'spec/music_composition/note_letter_spec.rb'
-    - 'spec/music_composition/note_quality_spec.rb'
-    - 'spec/music_composition/duration_type_spec.rb'
-    - 'spec/music_composition/duration_value_spec.rb'
-    - 'spec/music_composition/interval_quality_spec.rb'
-    - 'spec/music_composition/measure_type_spec.rb'
-    - 'spec/music_composition/scale_pattern_spec.rb'
 
 Style/AsciiComments:
   Exclude:

@@ -11,7 +11,7 @@ describe Interval do
   end
 
   it 'Raises ArgumentError in ref_comp_notes if direction nil' do
-    interval = described_class.new(note1: NOTE_C_NATURAL.dup, \
+    interval = described_class.new(note1: NOTE_C_NATURAL.dup,
                                    note2: NOTE_C_NATURAL.dup)
 
     interval.instance_variable_set(:@direction, nil)
@@ -21,7 +21,7 @@ describe Interval do
   end
 
   it 'Raises ArgumentError in letter_distance_to_val if letter_distance is nil' do
-    interval = described_class.new(note1: NOTE_C_NATURAL.dup, \
+    interval = described_class.new(note1: NOTE_C_NATURAL.dup,
                                    note2: NOTE_C_NATURAL.dup)
 
     interval.instance_variable_set(:@letter_distance, nil)
@@ -31,7 +31,7 @@ describe Interval do
   end
 
   it 'Raises ArgumentError in index_lookup if letter_distance is nil' do
-    interval = described_class.new(note1: NOTE_C_NATURAL.dup, \
+    interval = described_class.new(note1: NOTE_C_NATURAL.dup,
                                    note2: NOTE_C_NATURAL.dup)
 
     interval.instance_variable_set(:@letter_distance, nil)
@@ -40,22 +40,22 @@ describe Interval do
     expect { interval.send(:index_lookup) }.to raise_error ArgumentError
   end
 
-  interval1 = described_class.new(note1: NOTE_C_NATURAL.dup, \
+  interval1 = described_class.new(note1: NOTE_C_NATURAL.dup,
                                   note2: NOTE_D_NATURAL.dup)
-  interval2 = described_class.new(note1: NOTE_D_NATURAL.dup, \
+  interval2 = described_class.new(note1: NOTE_D_NATURAL.dup,
                                   note2: NOTE_E_NATURAL.dup)
-  interval3 = described_class.new(note1: NOTE_C_NATURAL.dup, \
+  interval3 = described_class.new(note1: NOTE_C_NATURAL.dup,
                                   note2: NOTE_E_D_FLAT.dup)
-  interval4 = described_class.new(note1: NOTE_C_NATURAL.dup, \
+  interval4 = described_class.new(note1: NOTE_C_NATURAL.dup,
                                   note2: NOTE_E_NATURAL.dup)
   describe '#equal?' do
     it 'returns true for equal intervals' do
-      expect(interval1).to be_equal(interval2)
+      expect(interval1).to equal(interval2)
     end
 
     it 'returns false for intervals that are not equal' do
-      expect(interval1).not_to be_equal(interval3)
-      expect(interval1).not_to be_equal(interval4)
+      expect(interval1).not_to equal(interval3)
+      expect(interval1).not_to equal(interval4)
     end
   end
 

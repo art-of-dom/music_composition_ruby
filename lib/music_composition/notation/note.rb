@@ -249,7 +249,7 @@ module MusicComposition
     #
     def name
       note_name = String.new(letter_name)
-      note_name.concat(quality_name) unless \
+      note_name.concat(quality_name) unless
         quality_val.zero?
       note_name.concat(@octave.to_s) unless @octave.nil?
       note_name
@@ -274,8 +274,8 @@ module MusicComposition
     #    note1.note_equal?(note4) # => false
     #
     def equal?(other)
-      ((other.val == @val) && (other.letter == @letter) && \
-       (other.quality == @quality))
+      (other.val == @val) && (other.letter == @letter) &&
+        (other.quality == @quality)
     end
 
     ##

@@ -30,7 +30,7 @@ module MusicComposition
     # _length_ : The length of the measure.
     attr_reader :notes, :durs, :type, :length, :excess_notes, :excess_durs
 
-    def initialize(notes: nil, durs: nil, type: Type::FIXED, \
+    def initialize(notes: nil, durs: nil, type: Type::FIXED,
                    length: Duration::Value::WHOLE)
       @notes = null_check_init(notes)
       @durs = null_check_init(durs)
