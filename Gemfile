@@ -7,7 +7,7 @@ gemspec
 
 gem 'bundler'
 gem 'fuubar'
-gem 'inch', '~> 0.7.1'
+gem 'inch', '~> 0.8.0'
 gem 'rake'
 gem 'rdoc'
 gem 'rspec'
