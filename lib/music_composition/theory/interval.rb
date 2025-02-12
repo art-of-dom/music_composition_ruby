@@ -143,9 +143,9 @@ module MusicComposition
     #    interval_gb.equal?(interval_ec) # => false
     #
     def equal?(other)
-      ((other.val_distance == @val_distance) && \
-       (other.letter_distance == @letter_distance) && \
-       (other.quality == @quality))
+      (other.val_distance == @val_distance) &&
+        (other.letter_distance == @letter_distance) &&
+        (other.quality == @quality)
     end
 
     ##
@@ -222,7 +222,7 @@ module MusicComposition
       set_quality
 
       @octave = comp.octave - ref.octave if !comp.octave.nil? && !ref.octave.nil?
-      @letter_distance += 7 if !@octave.nil? && @octave.positive? && \
+      @letter_distance += 7 if !@octave.nil? && @octave.positive? &&
                                (@_compound || @letter_distance.zero?)
     end
 
@@ -274,7 +274,7 @@ module MusicComposition
       @letter_distance = (comp.letter_id - ref.letter_id) % 7
       @val_distance = ((comp.val * oct_comp) - (ref.val * oct_ref))
       unison_correcter if @letter_distance.zero?
-      @val_distance = @val_distance % Note::SEMITONES_PER_OCTAVE
+      @val_distance %= Note::SEMITONES_PER_OCTAVE
     end
 
     # internally sets quality of the interval

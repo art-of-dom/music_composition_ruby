@@ -353,7 +353,7 @@ module MusicComposition
     def to_equivalent!(letter_shift)
       return if letter_shift.zero?
 
-      letter = (letter_id + letter_shift) % \
+      letter = (letter_id + letter_shift) %
                Letter::NUMBER_OF_LETTERS
       @letter = Letter.find_by_id letter
       set_quality

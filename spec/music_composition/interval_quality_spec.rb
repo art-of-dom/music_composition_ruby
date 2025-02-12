@@ -15,9 +15,9 @@ describe Interval::Quality do
   end
 
   it 'Has correct quality enums defined as values' do
-    expect(described_class.values).to eq [[-2, -3, 'dd'], [-1, -2, 'd'], \
-                                          [nil, -1, 'm'], [nil, 0, 'M'], \
-                                          [0, nil, 'P'], [1, 1, 'A'], \
+    expect(described_class.values).to eq [[-2, -3, 'dd'], [-1, -2, 'd'],
+                                          [nil, -1, 'm'], [nil, 0, 'M'],
+                                          [0, nil, 'P'], [1, 1, 'A'],
                                           [2, 2, 'AA']]
   end
 
